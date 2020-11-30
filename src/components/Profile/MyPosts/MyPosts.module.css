@@ -1,0 +1,37 @@
+.posts .newPost {
+    border: 1px solid rgba(255, 255, 255, 0.33);
+    border-radius: 5px;
+    padding: 20px;
+ 
+    display: grid;
+    grid-template-columns: 1fr 9fr;
+    grid-row: 10fr 2fr;
+    grid-template-areas: 
+         "avatar input" 
+         "avatar submit";
+ }
+ 
+ .posts .newPost .avatar {
+    grid-area: avatar;
+    padding: 10px;
+    text-align: center;
+ }
+ 
+ .posts .newPost .avatar img {
+    width: 75px;
+    border-radius: 150px;
+ }
+ 
+ .posts .newPost .text {
+    grid-area: input;
+    border: 1px solid rgba(255, 255, 255, 0.33);
+    background-color: rgba(255, 255, 255, 0.75);
+    border-radius: 5px;
+     margin-bottom: 10px;
+     
+ }
+ 
+ .posts .newPost .submit {
+    grid-area: submit;
+    width: 80px;
+ }
