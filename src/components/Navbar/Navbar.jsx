@@ -6,23 +6,23 @@ const Navbar = () => {
          <div className={styles.mainMenu}>
             <ul className={styles.menuList}>
                <li className={styles.item}>
-                  <a href='/'>Profile</a>
+                  <a href='/profile'>Profile</a>
                </li>
                <li className={styles.item}>
-                  <a href='/'>Messages</a>
+                  <a href='/dialogs'>Messages</a>
                </li>
                <li className={styles.item}>
-                  <a href='/'>News</a>
+                  <a href='/news'>News</a>
                </li>
                <li className={styles.item}>
-                  <a href='/'>Music</a>
+                  <a href='/music'>Music</a>
                </li>
             </ul>
          </div>
          <div className={styles.additionalMenu}>
             <ul className={styles.menuList}>
                <li className={styles.item}>
-                  <a href='/'>Settings</a>
+                  <a href='/settings'>Settings</a>
                </li>
             </ul>
          </div>
