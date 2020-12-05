@@ -1,7 +1,16 @@
 import Post from './Post/Post';
 import styles from './MyPosts.module.css';
 
-const MyPosts = () => {
+const MyPosts = ( {posts} ) => {
+   // const posts = [
+   //    { id: 1, message: 'Hey, how are you?', likesCount: 5 },
+   //    { id: 2, message: `It's my first post!`, likesCount: 20 },
+   // ];
+
+   const postsElements = posts.map(({ id, message, likesCount }) => (
+      <Post key={id} message={message} likesCount={likesCount} />
+   ));
+
    return (
       <div className={styles.posts}>
          <h1>My posts</h1>
@@ -13,12 +22,11 @@ const MyPosts = () => {
                   alt=''
                />
             </div>
-            <div className={styles.text}>Text</div>
+            <textarea type='text' className={styles.text} />
             <button className={styles.submit}>send</button>
          </div>
          <h2>Other posts</h2>
-         <Post message='Hey, how are you?' likesCount='5' />
-         <Post message={`It's my first post!`} likesCount='20' />
+         { postsElements }
       </div>
    );
 };

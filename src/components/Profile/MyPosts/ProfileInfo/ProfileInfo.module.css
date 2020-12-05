@@ -1,0 +1,29 @@
+.info {
+   margin-top: 20px;
+   display: grid;
+   grid-template-columns: 2fr 10fr;
+   gap: 25px;
+   margin-bottom: 20px;
+
+   border-bottom: 1px solid antiquewhite;
+}
+
+.info .avatar {
+   padding: 5px;
+   margin-bottom: 20px;
+}
+
+.info .avatar img {
+   width: 200px;
+   border-radius: 150px;
+}
+
+.description {
+   border: 1px solid rgba(255, 255, 255, 0.33);
+   border-radius: 5px;
+   color: #fff;
+
+   padding: 20px;
+   padding-top: 0;
+   margin-bottom: 20px;
+}
