@@ -9,26 +9,3 @@
    border-radius: 5px;
    padding: 20px;
 }
-
-.mainMenu {
-   margin-bottom: 30px;
-}
-
-.menuList {
-   list-style-type: none;
-   padding: 0;
-   margin: 0;
-}
-
-.menuList li {
-   margin-bottom: 10px;
-}
-
-.item a {
-   text-decoration: none;
-   color: antiquewhite;
-}
-
-.item a.activeLink {
-   color: rgb(22, 161, 128);
-}

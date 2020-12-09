@@ -1,0 +1,32 @@
+.friendsBlock {
+   text-align: center;
+   color: antiquewhite;
+}
+
+.friendsList {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+   gap: 5px;
+}
+
+.friend {
+   text-align: center;
+}
+
+.friend img {
+   width: 50px;
+}
+
+.friend a {
+   text-decoration: none;
+   color: antiquewhite;
+   font-weight: normal;
+}
+
+.friend a:hover {
+   color: rgb(22, 161, 128);
+}
+
+.friend p {
+   margin-top: 0;
+}

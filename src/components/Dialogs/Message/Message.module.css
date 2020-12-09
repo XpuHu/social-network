@@ -1,0 +1,26 @@
+.message {
+   margin-bottom: 20px;
+   display: flex;
+   width: 100%;
+}
+
+.message img {
+   width: 40px;
+   border-radius: 20px;
+   margin-right: 15px;
+   align-self: center;
+}
+
+.messageMy {
+   display: flex;
+   flex-flow: row-reverse;
+   margin-bottom: 20px;
+   width: 100%;
+}
+
+.messageMy img {
+   width: 40px;
+   border-radius: 20px;
+   margin-left: 15px;
+   align-self: center;
+}

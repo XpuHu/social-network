@@ -1,24 +1,13 @@
-import styles from './Profile.module.css';
 import MyPosts from './MyPosts/MyPosts';
-import ProfileInfo from './MyPosts/ProfileInfo/ProfileInfo';
+import ProfileInfo from './ProfileInfo/ProfileInfo';
+import ProfileHeader from './ProfileHeader/ProfileHeader';
 
-const Profile = ( {posts} ) => {
+const Profile = ({ state }) => {
    return (
       <div>
-         <ProfileHeader />
-         <ProfileInfo />
-         <MyPosts posts={posts} />
-      </div>
-   );
-};
-
-const ProfileHeader = (props) => {
-   return (
-      <div className={styles.header}>
-         <img
-            src='https://p.bigstockphoto.com/GeFvQkBbSLaMdpKXF1Zv_bigstock-Aerial-View-Of-Blue-Lakes-And--227291596.jpg'
-            alt=''
-         />
+         <ProfileHeader state={state.profile.header} />
+         <ProfileInfo state={state.profile.info} />
+         <MyPosts posts={state.posts} avatar={state.profile.info.avatar} />
       </div>
    );
 };

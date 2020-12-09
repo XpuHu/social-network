@@ -1,0 +1,27 @@
+.dialog {
+   margin-bottom: 20px;
+   display: flex;
+   width: 100%;
+}
+
+.dialog .active {
+   color: rgb(22, 161, 128);
+   font-weight: 600;
+}
+
+.dialog .active img {
+   border: 2px solid rgb(22, 161, 128);
+   border-radius: 27px;
+}
+
+.dialog a {
+   text-decoration: none;
+   color: antiquewhite;
+   display: flex;
+}
+
+.dialog img {
+   width: 50px;
+   border-radius: 25px;
+   margin-right: 15px;
+}
