@@ -1,0 +1,9 @@
+.messages {
+   padding: 10px 20px;
+   border-left: 1px solid antiquewhite;
+}
+
+.messagesBlock {
+   border-bottom: 1px solid antiquewhite;
+   margin-bottom: 25px;
+}

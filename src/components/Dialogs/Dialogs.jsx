@@ -1,27 +1,20 @@
 import styles from './Dialogs.module.css';
 import DialogItem from './DialogItem/DialogItem';
-import Message from './Message/Message';
+import Messages from './Messages/Messages';
 
-const Dialogs = ({ state }) => {
-   const dialogsElements = state.dialogs.map(({ name, id, avatar }) => (
+const Dialogs = ({ dialogsPage, dispatch }) => {
+   const dialogsElements = dialogsPage.dialogs.map(({ name, id, avatar }) => (
       <DialogItem key={id} name={name} id={id} avatar={avatar} />
    ));
-   const messagesElements = state.messages.map(
-      ({ message, id, my, avatar }) => (
-         <Message
-            key={id}
-            message={message}
-            id={id}
-            my={my}
-            avatar={avatar}
-         />
-      )
-   );
 
    return (
       <div className={styles.dialogs}>
          <div className={styles.dialogsList}>{dialogsElements}</div>
-         <div className={styles.messages}>{messagesElements}</div>
+         <Messages
+            messages={dialogsPage.messages}
+            newMessageText={dialogsPage.newMessageText}
+            dispatch={dispatch}
+         />
       </div>
    );
 };

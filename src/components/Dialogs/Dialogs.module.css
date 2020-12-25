@@ -1,20 +1,14 @@
 .dialogs {
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    gap: 25px;
-    height: 100%;
+   display: grid;
+   grid-template-columns: 1fr 3fr;
+   gap: 25px;
+   height: 100%;
 }
 
-.dialogsList,
-.messages {
-    padding: 10px 20px;
+.dialogsList {
+   padding: 10px 20px;
 }
 
-.dialog,
-.message {
-    margin-bottom: 20px;
-}
-
-.messages {
-    border-left: 1px solid antiquewhite;
+.dialog {
+   margin-bottom: 20px;
 }
