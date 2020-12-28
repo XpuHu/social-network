@@ -1,18 +1,21 @@
 import React from 'react';
 import Post from './Post/Post';
 import styles from './MyPosts.module.css';
+import {
+   addNewPostActionCreator,
+   updateNewPostTextActionCreator,
+} from '../../../redux/store';
 
 const MyPosts = ({ posts, avatar, newPostText, dispatch }) => {
    const newPost = React.createRef();
 
    const addNewPostHandler = () => {
-      dispatch({ type: 'ADD-NEW-POST' });
+      dispatch(addNewPostActionCreator());
    };
 
    const updateNewPostTextHandler = () => {
       const newText = newPost.current.value;
-      const action = { type: 'UPDATE-NEW-POST-TEXT', newText };
-      dispatch(action);
+      dispatch(updateNewPostTextActionCreator(newText));
    };
 
    const postsElements = posts.map(({ id, message, likesCount, avatar }) => (

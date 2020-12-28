@@ -1,3 +1,8 @@
+const ADD_NEW_POST = 'ADD-NEW-POST';
+const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+const ADD_NEW_MESSAGE = 'ADD-NEW-MESSAGE';
+const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
+
 const store = {
    _state: {
       dialogsPage: {
@@ -140,16 +145,16 @@ const store = {
 
    dispatch(action) {
       switch (action.type) {
-         case 'ADD-NEW-POST':
+         case ADD_NEW_POST:
             this._addNewPost();
             break;
-         case 'UPDATE-NEW-POST-TEXT':
+         case UPDATE_NEW_POST_TEXT:
             this._updateNewPostText(action.newText);
             break;
-         case 'ADD-NEW-MESSAGE':
+         case ADD_NEW_MESSAGE:
             this._addNewMessage();
             break;
-         case 'UPDATE-NEW-MESSAGE-TEXT':
+         case UPDATE_NEW_MESSAGE_TEXT:
             this._updateNewMessageText(action.newText);
             break;
 
@@ -191,4 +196,16 @@ const store = {
    },
 };
 
+export const addNewPostActionCreator = () => ({ type: ADD_NEW_POST });
+export const updateNewPostTextActionCreator = (newText) => ({
+   type: UPDATE_NEW_POST_TEXT,
+   newText,
+});
+export const addNewMessageActionCreator = () => ({ type: ADD_NEW_MESSAGE });
+export const updateNewMessageTextActionCreator = (newText) => ({
+   type: UPDATE_NEW_MESSAGE_TEXT,
+   newText,
+});
+
 export default store;
+window.store = store;
