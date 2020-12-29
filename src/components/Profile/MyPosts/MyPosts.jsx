@@ -2,20 +2,18 @@ import React from 'react';
 import Post from './Post/Post';
 import styles from './MyPosts.module.css';
 import {
-   addNewPostActionCreator,
-   updateNewPostTextActionCreator,
-} from '../../../redux/store';
+   addNewPostCreator,
+   updateNewPostTextCreator,
+} from '../../../redux/profileReducer';
 
 const MyPosts = ({ posts, avatar, newPostText, dispatch }) => {
-   const newPost = React.createRef();
-
    const addNewPostHandler = () => {
-      dispatch(addNewPostActionCreator());
+      dispatch(addNewPostCreator());
    };
 
-   const updateNewPostTextHandler = () => {
-      const newText = newPost.current.value;
-      dispatch(updateNewPostTextActionCreator(newText));
+   const updateNewPostTextHandler = (e) => {
+      const newText = e.target.value;
+      dispatch(updateNewPostTextCreator(newText));
    };
 
    const postsElements = posts.map(({ id, message, likesCount, avatar }) => (
@@ -38,7 +36,6 @@ const MyPosts = ({ posts, avatar, newPostText, dispatch }) => {
             <textarea
                value={newPostText}
                onChange={updateNewPostTextHandler}
-               ref={newPost}
                type='text'
                className={styles.text}
             />

@@ -1,7 +1,6 @@
-const ADD_NEW_POST = 'ADD-NEW-POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
-const ADD_NEW_MESSAGE = 'ADD-NEW-MESSAGE';
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
+import dialogsReducer from './dialogsReducer';
+import profileReducer from './profileReducer';
+import sidebarReducer from './sidebarReducer';
 
 const store = {
    _state: {
@@ -144,68 +143,15 @@ const store = {
    },
 
    dispatch(action) {
-      switch (action.type) {
-         case ADD_NEW_POST:
-            this._addNewPost();
-            break;
-         case UPDATE_NEW_POST_TEXT:
-            this._updateNewPostText(action.newText);
-            break;
-         case ADD_NEW_MESSAGE:
-            this._addNewMessage();
-            break;
-         case UPDATE_NEW_MESSAGE_TEXT:
-            this._updateNewMessageText(action.newText);
-            break;
+      let { profilePage, dialogsPage, sidebar } = this._state;
 
-         default:
-            break;
-      }
-   },
+      profilePage = profileReducer(profilePage, action);
+      dialogsPage = dialogsReducer(dialogsPage, action);
+      sidebar = sidebarReducer(sidebar, action);
 
-   _addNewPost() {
-      this._state.profilePage.posts.push({
-         id: this._state.profilePage.posts.length + 1,
-         message: this._state.profilePage.newPostText,
-         likesCount: 0,
-         avatar:
-            'https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/batman_hero_avatar_comics-512.png',
-      });
-      this._state.profilePage.newPostText = '';
-      this._callSubscriber();
-   },
-   _updateNewPostText(newText) {
-      this._state.profilePage.newPostText = newText;
-      this._callSubscriber();
-   },
-   _addNewMessage() {
-      const { dialogsPage } = this._state;
-      dialogsPage.messages.push({
-         id: dialogsPage.messages.length + 1,
-         message: dialogsPage.newMessageText,
-         my: true,
-         avatar:
-            'https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/batman_hero_avatar_comics-512.png',
-      });
-      dialogsPage.newMessageText = '';
-      this._callSubscriber();
-   },
-   _updateNewMessageText(newText) {
-      this._state.dialogsPage.newMessageText = newText;
       this._callSubscriber();
    },
 };
-
-export const addNewPostActionCreator = () => ({ type: ADD_NEW_POST });
-export const updateNewPostTextActionCreator = (newText) => ({
-   type: UPDATE_NEW_POST_TEXT,
-   newText,
-});
-export const addNewMessageActionCreator = () => ({ type: ADD_NEW_MESSAGE });
-export const updateNewMessageTextActionCreator = (newText) => ({
-   type: UPDATE_NEW_MESSAGE_TEXT,
-   newText,
-});
 
 export default store;
 window.store = store;

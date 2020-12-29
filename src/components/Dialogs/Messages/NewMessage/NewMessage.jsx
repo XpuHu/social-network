@@ -1,19 +1,18 @@
 import React from 'react';
 import {
-   addNewMessageActionCreator,
-   updateNewMessageTextActionCreator,
-} from '../../../../redux/store';
+   addNewMessageCreator,
+   updateNewMessageTextCreator,
+} from '../../../../redux/dialogsReducer';
 import styles from './NewMessage.module.css';
 
 const NewMessage = ({ newMessageText, dispatch }) => {
-   const newMessage = React.createRef();
    const addNewMessageHandler = () => {
-      dispatch(addNewMessageActionCreator());
+      dispatch(addNewMessageCreator());
    };
 
-   const updateNewMessageTextHandler = () => {
-      const newText = newMessage.current.value;
-      dispatch(updateNewMessageTextActionCreator(newText));
+   const updateNewMessageTextHandler = (e) => {
+      const newText = e.target.value;
+      dispatch(updateNewMessageTextCreator(newText));
    };
 
    return (
@@ -21,7 +20,6 @@ const NewMessage = ({ newMessageText, dispatch }) => {
          <textarea
             onChange={updateNewMessageTextHandler}
             value={newMessageText}
-            ref={newMessage}
             className={styles.messageInput}
          ></textarea>
          <button onClick={addNewMessageHandler} className={styles.submit}>
