@@ -1,6 +1,6 @@
 import styles from './Messages.module.css';
 import Message from './Message/Message';
-import NewMessage from './NewMessage/NewMessage';
+import NewMessageContainer from './NewMessage/NewMessageContainer';
 
 const Messages = ({ messages, newMessageText, dispatch }) => {
    const messagesElements = messages.map(({ message, id, my, avatar }) => (
@@ -10,7 +10,7 @@ const Messages = ({ messages, newMessageText, dispatch }) => {
    return (
       <div className={styles.messages}>
          <div className={styles.messagesBlock}>{messagesElements}</div>
-         <NewMessage newMessageText={newMessageText} dispatch={dispatch} />
+         <NewMessageContainer newMessageText={newMessageText} dispatch={dispatch} />
       </div>
    );
 };

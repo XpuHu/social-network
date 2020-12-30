@@ -5,19 +5,19 @@ import reportWebVitals from './reportWebVitals';
 import store from './redux/redux-store';
 import App from './App';
 
-const rerender = (store, state) => {
+const rerender = (store) => {
    ReactDOM.render(
       <React.StrictMode>
-         <App state={state} dispatch={store.dispatch.bind(store)} />
+         <App state={store.getState()} dispatch={store.dispatch.bind(store)} />
       </React.StrictMode>,
       document.getElementById('root')
    );
 };
 
-rerender(store, store.getState());
+rerender(store);
 
 store.subscribe( () => {
-   rerender(store, store.getState());
+   rerender(store);
 });
 
 // If you want to start measuring performance in your app, pass a function

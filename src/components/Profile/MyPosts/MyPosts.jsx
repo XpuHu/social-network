@@ -6,14 +6,20 @@ import {
    updateNewPostTextCreator,
 } from '../../../redux/profileReducer';
 
-const MyPosts = ({ posts, avatar, newPostText, dispatch }) => {
+const MyPosts = ({
+   posts,
+   avatar,
+   newPostText,
+   addNewPost,
+   updateNewPostText,
+}) => {
    const addNewPostHandler = () => {
-      dispatch(addNewPostCreator());
+      addNewPost();
    };
 
    const updateNewPostTextHandler = (e) => {
       const newText = e.target.value;
-      dispatch(updateNewPostTextCreator(newText));
+      updateNewPostText(newText);
    };
 
    const postsElements = posts.map(({ id, message, likesCount, avatar }) => (

@@ -1,18 +1,18 @@
 import React from 'react';
-import {
-   addNewMessageCreator,
-   updateNewMessageTextCreator,
-} from '../../../../redux/dialogsReducer';
 import styles from './NewMessage.module.css';
 
-const NewMessage = ({ newMessageText, dispatch }) => {
+const NewMessage = ({
+   newMessageText,
+   addNewMessage,
+   updateNewMessageText,
+}) => {
    const addNewMessageHandler = () => {
-      dispatch(addNewMessageCreator());
+      addNewMessage();
    };
 
    const updateNewMessageTextHandler = (e) => {
       const newText = e.target.value;
-      dispatch(updateNewMessageTextCreator(newText));
+      updateNewMessageText(newText);
    };
 
    return (
