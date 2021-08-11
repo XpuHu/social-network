@@ -6,6 +6,7 @@ import {
 import NewMessage from './NewMessage';
 
 const NewMessageContainer = ({ newMessageText, dispatch }) => {
+
    const addNewMessage = () => {
       dispatch(addNewMessageCreator());
    };

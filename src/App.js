@@ -14,19 +14,13 @@ const App = ({ state, dispatch }) => {
          <div className='app-wrapper'>
             <Header />
             <div className='navbar-content-wrapper'>
-               <Navbar state={state.sidebar} />
+               <Navbar />
                <div className='content-wrapper'>
                   <Route path='/profile'>
-                     <Profile
-                        profilePage={state.profilePage}
-                        dispatch={dispatch}
-                     />
+                     <Profile />
                   </Route>
                   <Route path='/dialogs'>
-                     <Dialogs
-                        dialogsPage={state.dialogsPage}
-                        dispatch={dispatch}
-                     />
+                     <Dialogs />
                   </Route>
                   <Route path='/news'>
                      <News />

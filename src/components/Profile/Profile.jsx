@@ -2,14 +2,27 @@ import MyPosts from './MyPosts/MyPosts';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 import ProfileHeader from './ProfileHeader/ProfileHeader';
 import MyPostsContainer from './MyPosts/MyPostsContainer';
+import StoreContext from "../../storeContext";
 
-const Profile = ({ profilePage, dispatch }) => {
+const Profile = () => {
    return (
-      <div>
-         <ProfileHeader state={profilePage.profile.header} />
-         <ProfileInfo state={profilePage.profile.info} />
-         <MyPostsContainer profilePage={profilePage} dispatch={dispatch} />
-      </div>
+      <StoreContext.Consumer>
+         {
+            (store) => {
+
+               const state = store.getState();
+               const { header, info } = state.profilePage.profile;
+               return (
+                  <div>
+                     <ProfileHeader state={ header } />
+                     <ProfileInfo state={ info } />
+                     <MyPostsContainer />
+                  </div>
+               );
+            }
+         }
+      </StoreContext.Consumer>
+
    );
 };
 

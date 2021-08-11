@@ -4,11 +4,14 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import store from './redux/redux-store';
 import App from './App';
+import StoreContext from "./storeContext";
 
 const rerender = (store) => {
    ReactDOM.render(
       <React.StrictMode>
-         <App state={store.getState()} dispatch={store.dispatch.bind(store)} />
+         <StoreContext.Provider value={ store }>
+            <App />
+         </StoreContext.Provider>
       </React.StrictMode>,
       document.getElementById('root')
    );
@@ -16,7 +19,7 @@ const rerender = (store) => {
 
 rerender(store);
 
-store.subscribe( () => {
+store.subscribe(() => {
    rerender(store);
 });
 
