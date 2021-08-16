@@ -1,13 +1,13 @@
 import styles from './ProfileInfo.module.css';
 
-const ProfileInfo = ({ state }) => {
+const ProfileInfo = ({ info }) => {
    return (
       <div className={styles.info}>
          <div className={styles.avatar}>
-            <img src={state.avatar} alt='' />
+            <img src={info.avatar} alt='' />
          </div>
          <div className={styles.description}>
-            <p>{state.description}</p>
+            <p>{info.description}</p>
          </div>
       </div>
    );

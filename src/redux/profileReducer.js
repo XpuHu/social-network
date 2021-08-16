@@ -36,35 +36,38 @@ const initialState = {
 const profileReducer = (state = initialState, action) => {
    switch (action.type) {
       case ADD_NEW_POST:
-         addNewPost(state);
-         return state;
+         return addNewPost(state);
       case UPDATE_NEW_POST_TEXT:
-         updateNewPostText(state, action.newText);
-         return state;
+         return updateNewPostText(state, action.newText);
       default:
          return state;
    }
 };
 
 const addNewPost = (state) => {
-   state.posts.push({
-      id: state.posts.length + 1,
-      message: state.newPostText,
+   const newState = { ...state };
+   newState.posts = [...state.posts];
+   newState.posts.push({
+      id: newState.posts.length + 1,
+      message: newState.newPostText,
       likesCount: 0,
       avatar:
          'https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/batman_hero_avatar_comics-512.png',
    });
-   state.newPostText = '';
+   newState.newPostText = '';
+   return newState;
 };
 
 const updateNewPostText = (state, newText) => {
-   state.newPostText = newText;
+   const newState = { ...state };
+   newState.newPostText = newText;
+   return newState;
 };
 
-export const addNewPostCreator = () => ({ type: ADD_NEW_POST });
-export const updateNewPostTextCreator = (newText) => ({
+export const addNewPostCreator = () => ( { type: ADD_NEW_POST } );
+export const updateNewPostTextCreator = (newText) => ( {
    type: UPDATE_NEW_POST_TEXT,
    newText,
-});
+} );
 
 export default profileReducer;

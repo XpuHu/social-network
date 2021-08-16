@@ -1,12 +1,12 @@
 import { NavLink } from 'react-router-dom';
 import styles from './Menu.module.css';
 
-const Menu = ({ state }) => {
+const Menu = ({ mainMenu, additionalMenu }) => {
    return (
       <div className={styles.menuBlock}>
          <div className={styles.mainMenu}>
             <ul className={styles.menuList}>
-               {state.mainMenu.map((link, i) => (
+               {mainMenu.map((link, i) => (
                   <li className={styles.item} key={i}>
                      <NavLink
                         to={link.path}
@@ -20,7 +20,7 @@ const Menu = ({ state }) => {
          </div>
          <div className={styles.additionalMenu}>
             <ul className={styles.menuList}>
-               {state.additionalMenu.map((link, i) => (
+               {additionalMenu.map((link, i) => (
                   <li className={styles.item} key={i}>
                      <NavLink
                         to={link.path}

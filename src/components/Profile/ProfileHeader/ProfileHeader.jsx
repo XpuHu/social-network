@@ -1,9 +1,9 @@
 import styles from './ProfileHeader.module.css';
 
-const ProfileHeader = ({ state }) => {
+const ProfileHeader = ({ header }) => {
    return (
       <div className={styles.header}>
-         <img src={state.image} alt={state.label} />
+         <img src={header.image} alt={header.label} />
       </div>
    );
 };

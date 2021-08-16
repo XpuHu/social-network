@@ -2,10 +2,10 @@ import React from 'react';
 import styles from './NewMessage.module.css';
 
 const NewMessage = ({
-   newMessageText,
-   addNewMessage,
-   updateNewMessageText,
-}) => {
+                       newMessageText,
+                       addNewMessage,
+                       updateNewMessageText,
+                    }) => {
    const addNewMessageHandler = () => {
       addNewMessage();
    };
@@ -16,13 +16,14 @@ const NewMessage = ({
    };
 
    return (
-      <div className={styles.messageBlock}>
+      <div className={ styles.messageBlock }>
          <textarea
-            onChange={updateNewMessageTextHandler}
-            value={newMessageText}
-            className={styles.messageInput}
-         ></textarea>
-         <button onClick={addNewMessageHandler} className={styles.submit}>
+            onChange={ updateNewMessageTextHandler }
+            value={ newMessageText }
+            className={ styles.messageInput }
+            key={`123`}
+         />
+         <button onClick={ addNewMessageHandler } className={ styles.submit }>
             Send
          </button>
       </div>
