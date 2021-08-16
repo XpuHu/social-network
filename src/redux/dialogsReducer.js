@@ -61,38 +61,31 @@ const initialState = {
 const dialogsReducer = (state = initialState, action) => {
    switch (action.type) {
       case ADD_NEW_MESSAGE:
-         return addNewMessage(state);
+         return {
+            ...state,
+            messages: [...state.messages, {
+               id: state.messages.length + 1,
+               message: state.newMessageText,
+               my: true,
+               avatar:
+                  'https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/batman_hero_avatar_comics-512.png',
+            }],
+            newMessageText: ''
+         }
       case UPDATE_NEW_MESSAGE_TEXT:
-         return updateNewMessageText(state, action.newText);
+         return {
+            ...state,
+            newMessageText: action.newText
+         }
       default:
          return state;
    }
 };
 
-const addNewMessage = (state) => {
-   const newState = {...state};
-   newState.messages = [...state.messages];
-   newState.messages.push({
-      id: newState.messages.length + 1,
-      message: newState.newMessageText,
-      my: true,
-      avatar:
-         'https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/batman_hero_avatar_comics-512.png',
-   });
-   newState.newMessageText = '';
-   return newState;
-};
-
-const updateNewMessageText = (state, newText) => {
-   const newState = {...state};
-   newState.newMessageText = newText;
-   return newState;
-};
-
-export const addNewMessageCreator = () => ({ type: ADD_NEW_MESSAGE });
-export const updateNewMessageTextCreator = (newText) => ({
+export const addNewMessageCreator = () => ( { type: ADD_NEW_MESSAGE } );
+export const updateNewMessageTextCreator = (newText) => ( {
    type: UPDATE_NEW_MESSAGE_TEXT,
    newText,
-});
+} );
 
 export default dialogsReducer;

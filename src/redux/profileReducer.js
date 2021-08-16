@@ -36,32 +36,24 @@ const initialState = {
 const profileReducer = (state = initialState, action) => {
    switch (action.type) {
       case ADD_NEW_POST:
-         return addNewPost(state);
+         return {
+            ...state,
+            posts: [...state.posts, {
+               id: state.posts.length + 1,
+               message: state.newPostText,
+               likesCount: 0,
+               avatar: 'https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/batman_hero_avatar_comics-512.png'
+            }],
+            newPostText: ''
+         }
       case UPDATE_NEW_POST_TEXT:
-         return updateNewPostText(state, action.newText);
+         return {
+            ...state,
+            newPostText: action.newText
+         }
       default:
          return state;
    }
-};
-
-const addNewPost = (state) => {
-   const newState = { ...state };
-   newState.posts = [...state.posts];
-   newState.posts.push({
-      id: newState.posts.length + 1,
-      message: newState.newPostText,
-      likesCount: 0,
-      avatar:
-         'https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/batman_hero_avatar_comics-512.png',
-   });
-   newState.newPostText = '';
-   return newState;
-};
-
-const updateNewPostText = (state, newText) => {
-   const newState = { ...state };
-   newState.newPostText = newText;
-   return newState;
 };
 
 export const addNewPostCreator = () => ( { type: ADD_NEW_POST } );
