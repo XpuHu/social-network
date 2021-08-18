@@ -1,0 +1,60 @@
+.usersHeader {
+    margin-top: 0;
+    padding: 0 25px;
+}
+
+.userList {
+    margin-bottom: 20px;
+    padding: 0 25px;
+}
+
+.userItem {
+    display: grid;
+    grid-template-rows: auto;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.userItem .userInfo, .userItem .followBtn {
+    display: grid;
+    grid-template-columns: 1fr 10fr;
+    gap: 15px;
+}
+
+.userInfo img {
+    width: 100%;
+    border-radius: 25px;
+}
+
+.userInfo .userMainInfo {
+    border: 1px solid aliceblue;
+    border-radius: 5px;
+    background-color: rgba(40, 40, 40, 1);
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 1fr 100px;
+}
+
+.userMainInfo .userNameStatus {
+    display: flex;
+    flex-flow: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.userNameStatus .userName {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.userMainInfo .userLocation {
+    justify-self: end;
+    max-width: 70px;
+    display: flex;
+    flex-flow: column;
+    align-items: end;
+}
+
+.showMoreBtn {
+    text-align: center;
+}

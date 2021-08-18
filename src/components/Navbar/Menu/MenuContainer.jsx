@@ -4,7 +4,8 @@ import Menu from "./Menu";
 const mapStateToProps = (state) => {
    return {
       mainMenu: state.sidebar.menu.mainMenu,
-      additionalMenu: state.sidebar.menu.additionalMenu
+      usersMenu: state.sidebar.menu.usersMenu,
+      settingsMenu: state.sidebar.menu.settingsMenu
    }
 }
 

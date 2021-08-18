@@ -1,0 +1,68 @@
+.usersHeader {
+    margin-top: 0;
+    padding: 0 25px;
+}
+
+.userList {
+    margin-bottom: 20px;
+    padding: 0 25px;
+}
+
+.userItem {
+    display: grid;
+    grid-template-columns: 85px 9fr;
+    gap: 25px;
+    margin-bottom: 15px;
+}
+
+.userItem .leftColumn {
+    padding: 10px;
+    display: grid;
+    grid-template-rows: auto;
+}
+
+.userItem .leftColumn button {
+    justify-self: center;
+    width: 65px;
+}
+
+.userItem img {
+    width: 100%;
+    border-radius: 25px;
+    margin-bottom: 10px;
+}
+
+.userItem .userInfo {
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 10fr 1fr;
+    gap: 15px;
+    border: 1px solid aliceblue;
+    border-radius: 5px;
+    background-color: rgba(40, 40, 40, 1);
+
+}
+
+.userInfo .userMainInfo {
+    display: flex;
+    flex-flow: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.userMainInfo .userName {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.userInfo .userLocation {
+    justify-self: end;
+    max-width: 70px;
+    display: flex;
+    flex-flow: column;
+    align-items: end;
+}
+
+.showMoreBtn {
+    text-align: center;
+}

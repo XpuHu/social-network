@@ -36,6 +36,5 @@
  .posts .newPost .submit {
     grid-area: submit;
     max-width: 60px;
-    height: 25px;
     justify-self: end;
  }

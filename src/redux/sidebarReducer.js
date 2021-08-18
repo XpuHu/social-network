@@ -6,7 +6,8 @@ const initialState = {
          { id: 3, label: 'News', path: '/news' },
          { id: 4, label: 'Music', path: '/music' },
       ],
-      additionalMenu: [{ id: 1, label: 'Settings', path: '/settings' }],
+      usersMenu: [{ id: 1, label: 'Users', path: '/users' }],
+      settingsMenu: [{ id: 1, label: 'Settings', path: '/settings' }],
    },
    friends: [
       {

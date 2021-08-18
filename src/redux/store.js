@@ -101,7 +101,7 @@ const store = {
                { id: 3, label: 'News', path: '/news' },
                { id: 4, label: 'Music', path: '/music' },
             ],
-            additionalMenu: [{ id: 1, label: 'Settings', path: '/settings' }],
+            settingsMenu: [{ id: 1, label: 'Settings', path: '/settings' }],
          },
          friends: [
             {

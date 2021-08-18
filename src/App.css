@@ -35,3 +35,11 @@
   border-radius: 5px;
   padding: 20px;
 }
+
+button {
+  color: rgba(33, 33, 33, 1);
+  background-color: rgb(22, 161, 128);
+  border: 0px;
+  border-radius: 5px;
+  padding: 5px;
+}
