@@ -49,7 +49,7 @@
 
 .userMainInfo .userLocation {
     justify-self: end;
-    max-width: 70px;
+    /*max-width: 70px;*/
     display: flex;
     flex-flow: column;
     align-items: end;

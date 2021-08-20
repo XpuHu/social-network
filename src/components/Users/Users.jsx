@@ -1,7 +1,19 @@
 import React from "react";
 import styles from './Users.module.css';
+import * as axios from 'axios';
+import userPhoto from '../../assets/images/avatar.png';
 
 const Users = (props) => {
+
+   // Грязь какая-то. Непонятно зачем тащить данные с сервака напрямую из компоненты
+   if (props.users.length === 0) {
+
+      axios
+         .get('https://social-network.samuraijs.com/api/1.0/users')
+         .then(response => {
+            props.setUsers(response.data.items)
+         })
+   }
 
 
    const toggleFollowHandler = (userId) => {
@@ -10,24 +22,26 @@ const Users = (props) => {
 
    const users = props.users.map(user => {
       return (
-         <div className={ styles.userItem } key={user.id}>
+         <div className={ styles.userItem } key={ user.id }>
 
             <div className={ styles.userInfo }>
-               <img src={user.avatar} alt="avatar" />
+               <img src={ user.photos.small ? user.photos.small : userPhoto } alt="avatar" />
                <div className={ styles.userMainInfo }>
                   <div className={ styles.userNameStatus }>
-                     <div className={ styles.userName }>{ user.fullName }</div>
-                     <div className={ styles.userStatus }>{ user.currentStatus }</div>
+                     <div className={ styles.userName }>{ user.name }</div>
+                     <div className={ styles.userStatus }>{ user.status }</div>
                   </div>
                   <div className={ styles.userLocation }>
-                     <div>{ `${user.location.cityName},` }</div>
-                     <div>{ user.location.countryName }</div>
+                     <div>{ `user.location.cityName,` }</div>
+                     <div>{ `user.location.countryName` }</div>
                   </div>
                </div>
             </div>
 
             <div className={ styles.followBtn }>
-               <button onClick={() => {toggleFollowHandler(user.id)}}>{ user.followed ? 'Unfollow' : 'Follow'}</button>
+               <button onClick={ () => {
+                  toggleFollowHandler(user.id)
+               } }>{ user.followed ? 'Unfollow' : 'Follow' }</button>
             </div>
 
          </div>

@@ -5,7 +5,7 @@ const TOGGLE_FOLLOW = 'TOGGLE_FOLLOW';
 
 const initialState = {
    users: [
-      {
+/*      {
          id: 1,
          followed: true,
          fullName: 'Dymich',
@@ -13,7 +13,7 @@ const initialState = {
          location: { cityName: 'Moscow', countryName: 'Russia' },
          avatar: 'https://image.flaticon.com/icons/png/512/147/147144.png'
       },
-      {
+      {id
          id: 2,
          followed: false,
          fullName: 'Viktor',
@@ -36,7 +36,7 @@ const initialState = {
          currentStatus: `I'm bread`,
          location: { cityName: 'London', countryName: 'UK' },
          avatar: 'https://image.flaticon.com/icons/png/512/194/194938.png'
-      }
+      }*/
    ]
 }
 
