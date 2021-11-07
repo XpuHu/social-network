@@ -51,6 +51,7 @@ const Users = (props) => {
    return (
       <div>
          <h2 className={ styles.usersHeader }>Users</h2>
+
          <div className={ styles.userList }>
             { users }
          </div>

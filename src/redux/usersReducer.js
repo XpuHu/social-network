@@ -2,6 +2,8 @@ const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';
 const TOGGLE_FOLLOW = 'TOGGLE_FOLLOW';
+const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
+const SET_TOTAL_USERS = 'SET_TOTAL_USERS';
 
 const initialState = {
    users: [
@@ -37,7 +39,10 @@ const initialState = {
       //    location: { cityName: 'London', countryName: 'UK' },
       //    avatar: 'https://image.flaticon.com/icons/png/512/194/194938.png'
       // }
-   ]
+   ],
+   currentPage: 1,
+   totalUsers: 0,
+   usersCountOnPage: 5
 }
 
 const usersReducer = (state = initialState, action) => {
@@ -65,13 +70,23 @@ const usersReducer = (state = initialState, action) => {
       case SET_USERS:
          return {
             ...state,
-            users: [...state.users, ...action.users]
+            users: [...action.users]
+         }
+      case SET_CURRENT_PAGE:
+         return {
+            ...state,
+            currentPage: action.currentPage
+         }
+      case SET_TOTAL_USERS:
+         return {
+            ...state,
+            totalUsers: action.totalUsers
          }
       case TOGGLE_FOLLOW:
          return {
             ...state,
             users: state.users.map(u => {
-               return u.id === action.userId ? {...u, followed: !u.followed} : u;
+               return u.id === action.userId ? { ...u, followed: !u.followed } : u;
             })
          }
       default:
@@ -83,5 +98,7 @@ export const followAC = (userId) => ( { type: FOLLOW, userId } );
 export const unfollowAC = (userId) => ( { type: UNFOLLOW, userId } );
 export const setUsersAC = (users) => ( { type: SET_USERS, users } );
 export const toggleFollowAC = (userId) => ( { type: TOGGLE_FOLLOW, userId } );
+export const setCurrentPageAC = (currentPage) => ( { type: SET_CURRENT_PAGE, currentPage } );
+export const setTotalUsersAC = (totalUsers) => ( { type: SET_TOTAL_USERS, totalUsers } );
 
 export default usersReducer;

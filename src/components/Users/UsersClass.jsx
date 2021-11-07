@@ -7,9 +7,10 @@ class UsersClass extends React.Component {
 
    componentDidMount() {
       axios
-         .get('https://social-network.samuraijs.com/api/1.0/users')
+         .get(`https://social-network.samuraijs.com/api/1.0/users?page=${ this.props.currentPage }&count=${ this.props.usersCountOnPage }`)
          .then(response => {
-            this.props.setUsers(response.data.items)
+            this.props.setUsers(response.data.items);
+            this.props.setTotalUsers(response.data.totalCount);
          })
    }
 
@@ -17,11 +18,22 @@ class UsersClass extends React.Component {
       this.props.toggleFollow(userId);
    }
 
+   setCurrentPageHandler(currentPage) {
+      this.props.setCurrentPage(currentPage);
+      axios
+         .get(`https://social-network.samuraijs.com/api/1.0/users?page=${ currentPage }&count=${ this.props.usersCountOnPage }`)
+         .then(response => {
+            this.props.setUsers(response.data.items);
+         })
+   }
+
    render() {
+
+      let pagesCount = Math.ceil(this.props.totalUsers / this.props.usersCountOnPage)
+
       const users = this.props.users.map(user => {
          return (
             <div className={ styles.userItem } key={ user.id }>
-
                <div className={ styles.userInfo }>
                   <img src={ user.photos.small ? user.photos.small : userPhoto } alt="avatar" />
                   <div className={ styles.userMainInfo }>
@@ -31,11 +43,11 @@ class UsersClass extends React.Component {
                      </div>
                      <div className={ styles.userLocation }>
                         <div>{ ( typeof user.location !== 'undefined' ) ?
-                                 ( ( user.location.cityName !== 'undefined' ) ? user.location.cityName : `user.location.cityName,` )
-                                 : `user.location.cityName,` }</div>
+                           ( ( user.location.cityName !== 'undefined' ) ? user.location.cityName : `user.location.cityName,` )
+                           : `user.location.cityName,` }</div>
                         <div>{ typeof user.location !== 'undefined' ?
-                                 ( ( user.location.countryName !== 'undefined' ) ? user.location.countryName : `user.location.countryName,` )
-                                 : `user.location.countryName` }</div>
+                           ( ( user.location.countryName !== 'undefined' ) ? user.location.countryName : `user.location.countryName,` )
+                           : `user.location.countryName` }</div>
                      </div>
                   </div>
                </div>
@@ -50,9 +62,53 @@ class UsersClass extends React.Component {
          );
       });
 
+      let pages = [];
+      for (let i = 1; i <= pagesCount; i++) {
+         pages.push(i);
+      }
+
+      let pagesToShow = [];
+
+      switch (true) {
+         case this.props.currentPage < 6:
+            for (let i = 1; i <= pages.length; i++) {
+               if (i <= this.props.currentPage + 2 && i >= this.props.currentPage - 4) {
+                  pagesToShow.push(i);
+               }
+            }
+            pagesToShow = [...pagesToShow, '...', pages.length];
+            break;
+         case this.props.currentPage >= pages.length - 3:
+            pagesToShow = [...pagesToShow, 1, '...'];
+            for (let i = 1; i <= pages.length; i++) {
+               if (i <= this.props.currentPage + 3 && i >= this.props.currentPage - 2) {
+                  pagesToShow.push(i);
+               }
+            }
+            break;
+         default:
+            pagesToShow = [...pagesToShow, 1, '...'];
+            for (let i = 1; i <= pages.length; i++) {
+               if (i <= this.props.currentPage + 2 && i >= this.props.currentPage - 2) {
+                  pagesToShow.push(i);
+               }
+            }
+            pagesToShow = [...pagesToShow, '...', pages.length];
+            break;
+      }
+
       return (
          <div>
             <h2 className={ styles.usersHeader }>Users</h2>
+            <div className={ styles.pagination }>
+               { pagesToShow.map(p => {
+                  return <span className={ this.props.currentPage === p && styles.selectedPage }
+                               onClick={ () => {
+                                  this.setCurrentPageHandler(p)
+                               }
+                               }>{ p }</span>
+               }) }
+            </div>
             <div className={ styles.userList }>
                { users }
             </div>
