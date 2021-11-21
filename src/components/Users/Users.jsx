@@ -1,10 +1,11 @@
 import React from "react";
 import styles from './Users.module.css';
 import userPhoto from '../../assets/images/avatar.png';
+import preloader from '../../assets/images/preloader.svg';
 
 const Users = (props) => {
 
-   let pagesCount = Math.ceil(props.totalUsers / props.usersCountOnPage)
+   let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
 
    const users = props.users.map(user => {
       return (
@@ -71,10 +72,12 @@ const Users = (props) => {
          pagesToShow = [...pagesToShow, '...', pages.length];
          break;
    }
-debugger
+
    return (
-      <div>
+      <>
          <h2 className={ styles.usersHeader }>Users</h2>
+         <div>{ props.isFetching ? <img src={ preloader }/> : null } </div>
+      <div>
          <div className={ styles.pagination }>
             { pagesToShow.map(p => {
                return <span className={ props.currentPage === p && styles.selectedPage }
@@ -91,6 +94,7 @@ debugger
             <button>Show more</button>
          </div>
       </div>
+      </>
    )
 }
 
