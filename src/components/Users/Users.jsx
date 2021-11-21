@@ -1,7 +1,7 @@
 import React from "react";
 import styles from './Users.module.css';
 import userPhoto from '../../assets/images/avatar.png';
-import preloader from '../../assets/images/preloader.svg';
+import Preloader from "../Common/Preloader/Preloader";
 
 const Users = (props) => {
 
@@ -76,24 +76,24 @@ const Users = (props) => {
    return (
       <>
          <h2 className={ styles.usersHeader }>Users</h2>
-         <div>{ props.isFetching ? <img src={ preloader }/> : null } </div>
-      <div>
-         <div className={ styles.pagination }>
-            { pagesToShow.map(p => {
-               return <span className={ props.currentPage === p && styles.selectedPage }
-                            onClick={ () => {
-                               props.setCurrentPageHandler(p)
-                            }
-                            }>{ p }</span>
-            }) }
+         <div>{ props.isFetching ? <Preloader /> : null } </div>
+         <div>
+            <div className={ styles.pagination }>
+               { pagesToShow.map(p => {
+                  return <span className={ props.currentPage === p && styles.selectedPage }
+                               onClick={ () => {
+                                  props.setCurrentPageHandler(p)
+                               }
+                               }>{ p }</span>
+               }) }
+            </div>
+            <div className={ styles.userList }>
+               { users }
+            </div>
+            <div className={ styles.showMoreBtn }>
+               <button>Show more</button>
+            </div>
          </div>
-         <div className={ styles.userList }>
-            { users }
-         </div>
-         <div className={ styles.showMoreBtn }>
-            <button>Show more</button>
-         </div>
-      </div>
       </>
    )
 }
