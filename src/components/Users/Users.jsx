@@ -46,6 +46,8 @@ const Users = (props) => {
    let pagesToShow = [];
 
    switch (true) {
+      case pagesCount == 0:
+         break;
       case props.currentPage < 6:
          for (let i = 1; i <= pages.length; i++) {
             if (i <= props.currentPage + 2 && i >= props.currentPage - 4) {
@@ -76,17 +78,17 @@ const Users = (props) => {
    return (
       <>
          <h2 className={ styles.usersHeader }>Users</h2>
-         <div>{ props.isFetching ? <Preloader /> : null } </div>
+         <div className={ styles.pagination }>
+            { pagesToShow.map(p => {
+               return <span className={ props.currentPage === p && styles.selectedPage }
+                            onClick={ () => {
+                               props.setCurrentPageHandler(p)
+                            }
+                            }>{ p }</span>
+            }) }
+         </div>
+         { props.isFetching ? <Preloader /> : null }
          <div>
-            <div className={ styles.pagination }>
-               { pagesToShow.map(p => {
-                  return <span className={ props.currentPage === p && styles.selectedPage }
-                               onClick={ () => {
-                                  props.setCurrentPageHandler(p)
-                               }
-                               }>{ p }</span>
-               }) }
-            </div>
             <div className={ styles.userList }>
                { users }
             </div>
