@@ -3,7 +3,7 @@ import ProfileHeader from "./ProfileHeader";
 
 const mapStateToProps = (state) => {
    return {
-      header: state.profilePage.profile.header
+      header: state.profilePage.header
    }
 }
 

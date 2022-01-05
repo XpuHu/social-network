@@ -9,7 +9,6 @@ import {
 } from "../../redux/usersReducer";
 import React from "react";
 import * as axios from "axios";
-
 class UsersContainer extends React.Component {
 
    componentDidMount() {

@@ -9,7 +9,7 @@ import { connect } from "react-redux";
 const mapStateToProps = (state) => {
    return {
       posts: state.profilePage.posts,
-      avatar: state.profilePage.profile.info.avatar,
+      avatar: state.profilePage.profile.photos.small,
       newPostText: state.profilePage.newPostText
    }
 }

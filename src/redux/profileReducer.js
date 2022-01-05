@@ -1,5 +1,7 @@
 const ADD_NEW_POST = 'ADD-NEW-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+const SET_USER_PROFILE = 'SET_USER_PROFILE';
+
 
 const initialState = {
    posts: [
@@ -18,17 +20,23 @@ const initialState = {
             'https://cdn.iconscout.com/icon/free/png-256/avatar-370-456322.png',
       },
    ],
-   profile: {
-      header: {
-         image:
-            'https://p.bigstockphoto.com/GeFvQkBbSLaMdpKXF1Zv_bigstock-Aerial-View-Of-Blue-Lakes-And--227291596.jpg',
-         label: 'header',
-      },
-      info: {
-         avatar:
-            'https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/batman_hero_avatar_comics-512.png',
-         description: 'description',
-      },
+   // profile: {
+   //    header: {
+   //       image:
+   //          'https://p.bigstockphoto.com/GeFvQkBbSLaMdpKXF1Zv_bigstock-Aerial-View-Of-Blue-Lakes-And--227291596.jpg',
+   //       label: 'header',
+   //    },
+   //    info: {
+   //       avatar:
+   //          'https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/batman_hero_avatar_comics-512.png',
+   //       description: 'description',
+   //    },
+   // },
+   profile: null,
+   header: {
+      image:
+         'https://p.bigstockphoto.com/GeFvQkBbSLaMdpKXF1Zv_bigstock-Aerial-View-Of-Blue-Lakes-And--227291596.jpg',
+      label: 'header',
    },
    newPostText: '',
 };
@@ -51,6 +59,11 @@ const profileReducer = (state = initialState, action) => {
             ...state,
             newPostText: action.newText
          }
+      case SET_USER_PROFILE:
+         return {
+            ...state,
+            profile: action.profile
+         }
       default:
          return state;
    }
@@ -59,7 +72,11 @@ const profileReducer = (state = initialState, action) => {
 export const addNewPostCreator = () => ( { type: ADD_NEW_POST } );
 export const updateNewPostTextCreator = (newText) => ( {
    type: UPDATE_NEW_POST_TEXT,
-   newText,
+   newText
+} );
+export const setUserProfile = (profile) => ( {
+   type: SET_USER_PROFILE,
+   profile
 } );
 
 export default profileReducer;

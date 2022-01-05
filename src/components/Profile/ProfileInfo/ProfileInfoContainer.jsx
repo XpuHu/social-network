@@ -3,7 +3,8 @@ import ProfileInfo from "./ProfileInfo";
 
 const mapStateToProps = (state) => {
    return {
-      info: state.profilePage.profile.info
+      description: state.profilePage.profile.aboutMe,
+      avatar: state.profilePage.profile.photos.large
    }
 }
 

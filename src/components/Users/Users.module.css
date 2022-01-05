@@ -65,7 +65,7 @@
     /*max-width: 70px;*/
     display: flex;
     flex-flow: column;
-    align-items: end;
+    align-items: flex-end;
 }
 
 .showMoreBtn {

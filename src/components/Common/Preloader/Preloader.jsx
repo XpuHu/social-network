@@ -4,7 +4,7 @@ import React from "react";
 const Preloader = () => {
    return (
       <div style={{textAlign: 'center'}}>
-         <img src={ preloader } />
+         <img src={ preloader } alt='preloader' />
       </div>
    )
 }

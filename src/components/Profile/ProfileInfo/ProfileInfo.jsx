@@ -1,13 +1,32 @@
 import styles from './ProfileInfo.module.css';
 
-const ProfileInfo = ({ info }) => {
-   return (
-      <div className={styles.info}>
-         <div className={styles.avatar}>
-            <img src={info.avatar} alt='' />
+const ProfileInfo = ({ profile }) => {
+   const contacts = Object.entries(profile.contacts).map(([source, value]) => {
+      return (
+         <div className={ styles.contactRow }>
+            <div className={ styles.contactLabel }>{ source }</div>
+            <div className={ styles.contactValue }>{ value ? value : '-' }</div>
          </div>
-         <div className={styles.description}>
-            <p>{info.description}</p>
+      )
+   })
+
+   return (
+      <div className={ styles.profile }>
+         <div className={ styles.avatar }>
+            <img src={ profile.photos.large } alt='avatar' />
+         </div>
+         <div className={ styles.profileInfo }>
+            <div className={ styles.commonInfo }>
+               <h1>{ profile.fullName }</h1>
+               <p>Ищу работу: { profile.lookingForAJob ? 'Да' : 'Нет' }</p>
+               <p><i>{ profile.lookingForAJobDescription }</i></p>
+            </div>
+            <div className={ styles.detailedInfo }>
+               <p>{ profile.aboutMe }</p>
+               <div className={ styles.contacts }>
+                  { contacts }
+               </div>
+            </div>
          </div>
       </div>
    );

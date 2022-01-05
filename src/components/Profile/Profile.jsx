@@ -1,12 +1,17 @@
 import MyPostsContainer from './MyPosts/MyPostsContainer';
-import ProfileHeaderContainer from "./ProfileHeader/ProfileHeaderContainer";
 import ProfileInfoContainer from "./ProfileInfo/ProfileInfoContainer";
+import Preloader from "../Common/Preloader/Preloader";
+import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
-const Profile = () => {
+const Profile = (props) => {
+
+   if(!props.profile) {
+      return <Preloader />
+   }
+
    return (
       <div>
-         <ProfileHeaderContainer />
-         <ProfileInfoContainer />
+         <ProfileInfo profile = {props.profile} />
          <MyPostsContainer />
       </div>
    );

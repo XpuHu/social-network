@@ -2,6 +2,7 @@ import React from "react";
 import styles from './Users.module.css';
 import userPhoto from '../../assets/images/avatar.png';
 import Preloader from "../Common/Preloader/Preloader";
+import { NavLink } from "react-router-dom";
 
 const Users = (props) => {
 
@@ -11,7 +12,9 @@ const Users = (props) => {
       return (
          <div className={ styles.userItem } key={ user.id }>
             <div className={ styles.userInfo }>
-               <img src={ user.photos.small ? user.photos.small : userPhoto } alt="avatar" />
+               <NavLink to={ '/profile/' + user.id }>
+                  <img src={ user.photos.small ? user.photos.small : userPhoto } alt="avatar" />
+               </NavLink>
                <div className={ styles.userMainInfo }>
                   <div className={ styles.userNameStatus }>
                      <div className={ styles.userName }>{ user.name }</div>
@@ -46,7 +49,7 @@ const Users = (props) => {
    let pagesToShow = [];
 
    switch (true) {
-      case pagesCount == 0:
+      case pagesCount === 0:
          break;
       case props.currentPage < 6:
          for (let i = 1; i <= pages.length; i++) {
