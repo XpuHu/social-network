@@ -1,5 +1,4 @@
 import MyPostsContainer from './MyPosts/MyPostsContainer';
-import ProfileInfoContainer from "./ProfileInfo/ProfileInfoContainer";
 import Preloader from "../Common/Preloader/Preloader";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 

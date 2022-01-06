@@ -1,4 +1,5 @@
 import styles from './ProfileInfo.module.css';
+import userPhoto from '../../../assets/images/avatar.png';
 
 const ProfileInfo = ({ profile }) => {
    const contacts = Object.entries(profile.contacts).map(([source, value]) => {
@@ -13,7 +14,7 @@ const ProfileInfo = ({ profile }) => {
    return (
       <div className={ styles.profile }>
          <div className={ styles.avatar }>
-            <img src={ profile.photos.large } alt='avatar' />
+            <img src={ profile.photos.large ? profile.photos.large : userPhoto } alt='avatar' />
          </div>
          <div className={ styles.profileInfo }>
             <div className={ styles.commonInfo }>
