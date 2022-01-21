@@ -5,9 +5,26 @@
    box-shadow: 0 0 10px;
 
    padding: 0 150px;
+   display: flex;
+   justify-content: space-between;
 }
 
 .header img {
-   width: 50px;
-   margin: 5px 0 20px 5px;
+   /*width: 50px;*/
+   /*margin: 5px 0 20px 5px;*/
+}
+
+.authBlock {
+   color: rgb(22, 161, 128);
+   font-weight: 600;
+   margin: auto 15px auto 0;
+}
+
+
+.authBlock a {
+   color: rgb(22, 161, 128);
+   font-weight: 600;
+   text-decoration: none;
+   margin: 0;
+   padding: 0;
 }
