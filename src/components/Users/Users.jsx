@@ -4,6 +4,7 @@ import userPhoto from '../../assets/images/avatar.png';
 import Preloader from "../Common/Preloader/Preloader";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
+import { userAPI } from "../../api/api";
 
 const Users = (props) => {
 
@@ -35,27 +36,13 @@ const Users = (props) => {
             <div className={ styles.followBtn }>
                <button onClick={ () => {
                   user.followed ?
-                     axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${ user.id }`, {
-                        withCredentials: true,
-                        headers: {
-                           "API-KEY": "c00b7690-d0c3-4e1e-8302-e3ab3c8dd373"
-                        }
-                     })
-                        .then(response => {
-                           if (response.data.resultCode == 0) {
+                     userAPI.unfollow(user.id)
+                        .then(() => {
                               props.toggleFollowHandler(user.id)
-                           }
                         })
-                     : axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${ user.id }`, {}, {
-                        withCredentials: true,
-                        headers: {
-                           "API-KEY": "c00b7690-d0c3-4e1e-8302-e3ab3c8dd373"
-                        }
-                     })
-                        .then(response => {
-                           if (response.data.resultCode == 0) {
-                              props.toggleFollowHandler(user.id)
-                           }
+                     : userAPI.follow(user.id)
+                        .then(() => {
+                           props.toggleFollowHandler(user.id)
                         })
 
                } }>{ user.followed ? 'Unfollow' : 'Follow' }</button>

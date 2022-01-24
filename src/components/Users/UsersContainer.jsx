@@ -8,21 +8,17 @@ import {
    toggleIsFetching
 } from "../../redux/usersReducer";
 import React from "react";
-import * as axios from "axios";
+import { userAPI } from "../../api/api";
 
 class UsersContainer extends React.Component {
 
    componentDidMount() {
       this.props.setUsers([]);
       this.props.toggleIsFetching(true);
-      axios
-         .get(`https://social-network.samuraijs.com/api/1.0/users?page=${ this.props.currentPage }&count=${ this.props.pageSize }`,
-            {
-               withCredentials: true
-            })
-         .then(response => {
-            this.props.setUsers(response.data.items);
-            this.props.setTotalUsers(response.data.totalCount);
+      userAPI.getUsers(this.props.currentPage, this.props.pageSize)
+         .then(data => {
+            this.props.setUsers(data.items);
+            this.props.setTotalUsers(data.totalCount);
             this.props.toggleIsFetching(false);
          })
    }
@@ -31,13 +27,9 @@ class UsersContainer extends React.Component {
       this.props.setCurrentPage(currentPage);
       this.props.setUsers([]);
       this.props.toggleIsFetching(true);
-      axios
-         .get(`https://social-network.samuraijs.com/api/1.0/users?page=${ currentPage }&count=${ this.props.pageSize }`,
-            {
-               withCredentials: true
-            })
-         .then(response => {
-            this.props.setUsers(response.data.items);
+      userAPI.getUsers(currentPage, this.props.pageSize)
+         .then(data => {
+            this.props.setUsers(data.items);
             this.props.toggleIsFetching(false);
          })
    }
