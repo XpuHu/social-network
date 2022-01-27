@@ -1,24 +1,21 @@
 import { connect } from "react-redux";
 import Users from "./Users";
-import {
-   getUsersThunkCreator,
-   toggleFollowThunkCreator,
-} from "../../redux/usersReducer";
+import { getUsers, toggleFollow } from "../../redux/usersReducer";
 import React from "react";
 
 class UsersContainer extends React.Component {
 
    componentDidMount() {
-      this.props.getUsersThunkCreator(this.props.currentPage, this.props.pageSize);
+      this.props.getUsers(this.props.currentPage, this.props.pageSize);
    }
 
    setCurrentPageHandler = (currentPage) => {
-      this.props.getUsersThunkCreator(currentPage, this.props.pageSize);
+      this.props.getUsers(currentPage, this.props.pageSize);
    }
 
    render() {
       return <Users { ...this.props }
-                    toggleFollowHandler={ this.props.toggleFollowThunkCreator }
+                    toggleFollow={ this.props.toggleFollow }
                     setCurrentPageHandler={ this.setCurrentPageHandler } />
    }
 }
@@ -55,6 +52,6 @@ const mapStateToProps = (state) => {
 // }
 
 export default connect(mapStateToProps, {
-   getUsersThunkCreator,
-   toggleFollowThunkCreator
+   getUsers,
+   toggleFollow
 })(UsersContainer);

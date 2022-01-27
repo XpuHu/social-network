@@ -3,6 +3,7 @@ import styles from './Users.module.css';
 import userPhoto from '../../assets/images/avatar.png';
 import Preloader from "../Common/Preloader/Preloader";
 import { NavLink } from "react-router-dom";
+import { toggleFollow } from "../../redux/usersReducer";
 
 const Users = (props) => {
 
@@ -33,7 +34,7 @@ const Users = (props) => {
 
             <div className={ styles.followBtn }>
                <button disabled={ props.followingInProgress.some(userId => userId === user.id) } onClick={ () => {
-                  props.toggleFollowHandler(user.id, user.followed)
+                  props.toggleFollow(user.id, user.followed)
                } }>{ user.followed ? 'Unfollow' : 'Follow' }</button>
             </div>
 

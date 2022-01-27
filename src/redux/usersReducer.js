@@ -3,7 +3,7 @@
 import { userAPI } from "../api/api";
 
 const SET_USERS = 'SET_USERS';
-const TOGGLE_FOLLOW = 'TOGGLE_FOLLOW';
+const TOGGLE_FOLLOW_PARAM = 'TOGGLE_FOLLOW_PARAM';
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 const SET_TOTAL_USERS = 'SET_TOTAL_USERS';
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
@@ -88,7 +88,7 @@ const usersReducer = (state = initialState, action) => {
             ...state,
             totalUsersCount: action.totalUsersCount
          }
-      case TOGGLE_FOLLOW:
+      case TOGGLE_FOLLOW_PARAM:
          return {
             ...state,
             users: state.users.map(user => {
@@ -116,7 +116,7 @@ const usersReducer = (state = initialState, action) => {
 // export const follow = (userId) => ( { type: FOLLOW, userId } );
 // export const unfollow = (userId) => ( { type: UNFOLLOW, userId } );
 export const setUsers = (users) => ( { type: SET_USERS, users } );
-export const toggleFollow = (userId) => ( { type: TOGGLE_FOLLOW, userId } );
+export const toggleFollowParam = (userId) => ( { type: TOGGLE_FOLLOW_PARAM, userId } );
 export const setCurrentPage = (currentPage) => ( { type: SET_CURRENT_PAGE, currentPage } );
 export const setTotalUsers = (totalUsersCount) => ( { type: SET_TOTAL_USERS, totalUsersCount } );
 export const toggleIsFetching = (isFetching) => ( { type: TOGGLE_IS_FETCHING, isFetching } );
@@ -127,7 +127,7 @@ export const toggleFollowingProgress = (isFetching, userId) => ( {
 } );
 
 // THUNK CREATORS
-export const getUsersThunkCreator = (currentPage, pageSize) => {
+export const getUsers = (currentPage, pageSize) => {
    return (dispatch) => {
       dispatch(setCurrentPage(currentPage));
       dispatch(setUsers([]));
@@ -141,18 +141,18 @@ export const getUsersThunkCreator = (currentPage, pageSize) => {
    }
 }
 
-export const toggleFollowThunkCreator = (userId, followed) => {
+export const toggleFollow = (userId, followed) => {
    return (dispatch) => {
       dispatch(toggleFollowingProgress(true, userId));
       followed ?
          userAPI.unfollow(userId)
             .then(() => {
-               dispatch(toggleFollow(userId));
+               dispatch(toggleFollowParam(userId));
                dispatch(toggleFollowingProgress(false, userId));
             })
          : userAPI.follow(userId)
             .then(() => {
-               dispatch(toggleFollow(userId));
+               dispatch(toggleFollowParam(userId));
                dispatch(toggleFollowingProgress(false, userId));
             })
    }
