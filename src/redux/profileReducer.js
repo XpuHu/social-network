@@ -3,7 +3,7 @@ import { profileAPI } from "../api/api";
 const ADD_NEW_POST = 'ADD-NEW-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
-
+const SET_USER_STATUS = 'SET_USER_STATUS';
 
 const initialState = {
    posts: [
@@ -66,6 +66,14 @@ const profileReducer = (state = initialState, action) => {
             ...state,
             profile: action.profile
          }
+      case SET_USER_STATUS:
+         return {
+            ...state,
+            profile: {
+               ...state.profile,
+               status: action.status
+            }
+         }
       default:
          return state;
    }
@@ -77,10 +85,12 @@ export const updateNewPostTextCreator = (newText) => ( {
    type: UPDATE_NEW_POST_TEXT,
    newText
 } );
-export const setUserProfile = (profile) => ( {
+const setUserProfile = (profile) => ( {
    type: SET_USER_PROFILE,
    profile
 } );
+
+const setUserStatus = (status) => ({ type: SET_USER_STATUS, status });
 
 
 // THUNK CREATORS
@@ -88,6 +98,14 @@ export const getUserProfile = (userId) => {
    return (dispatch) => {
       profileAPI.getUserProfile(userId).then(data => {
          dispatch(setUserProfile(data));
+      })
+   }
+}
+
+export const getUserStatus = (userId) => {
+   return (dispatch) => {
+      profileAPI.getUserStatus(userId).then(status => {
+         dispatch(setUserStatus(status));
       })
    }
 }

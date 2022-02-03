@@ -8,6 +8,7 @@ class ProfileStatus extends React.Component {
    }
 
    toggleEditMode = () => {
+      console.log(this);
       this.setState({
          editMode: !this.state.editMode
       })

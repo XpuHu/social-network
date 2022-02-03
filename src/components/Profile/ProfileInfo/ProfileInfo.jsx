@@ -20,8 +20,8 @@ const ProfileInfo = ({ profile }) => {
          <div className={ styles.profileInfo }>
             <div className={ styles.commonInfo }>
                <h1>{ profile.fullName }</h1>
-               <ProfileStatus status={'huyatus'}/>
-               <div className={styles.jobInfo}>
+               <ProfileStatus status={ profile.status } />
+               <div className={ styles.jobInfo }>
                   <p>Ищу работу: { profile.lookingForAJob ? 'Да' : 'Нет' }</p>
                   <p><i>{ profile.lookingForAJobDescription }</i></p>
                </div>
