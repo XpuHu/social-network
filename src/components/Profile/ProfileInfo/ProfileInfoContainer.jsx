@@ -5,7 +5,8 @@ import { compose } from "redux";
 const mapStateToProps = (state) => {
    return {
       description: state.profilePage.profile.aboutMe,
-      avatar: state.profilePage.profile.photos.large
+      avatar: state.profilePage.profile.photos.large,
+      status: state.profilePage.status
    }
 }
 

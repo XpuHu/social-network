@@ -2,6 +2,7 @@ import MyPostsContainer from './MyPosts/MyPostsContainer';
 import Preloader from "../Common/Preloader/Preloader";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import { updateUserStatus } from "../../redux/profileReducer";
+import ProfileInfoContainer from "./ProfileInfo/ProfileInfoContainer";
 
 const Profile = (props) => {
 
@@ -11,7 +12,7 @@ const Profile = (props) => {
 
    return (
       <div>
-         <ProfileInfo profile={ props.profile } updateUserStatus={ props.updateUserStatus } />
+         <ProfileInfoContainer profile={ props.profile } updateUserStatus={ props.updateUserStatus } />
          <MyPostsContainer />
       </div>
    );

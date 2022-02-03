@@ -41,6 +41,7 @@ const initialState = {
       label: 'header',
    },
    newPostText: '',
+   status: '----'
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -69,10 +70,7 @@ const profileReducer = (state = initialState, action) => {
       case SET_USER_STATUS:
          return {
             ...state,
-            profile: {
-               ...state.profile,
-               status: action.status
-            }
+            status: action.status
          }
       default:
          return state;
@@ -112,7 +110,7 @@ export const getUserStatus = (userId) => {
 
 export const updateUserStatus = (status) => {
    return (dispatch) => {
-      profileAPI.setUserStatus(status).then(status => {
+      profileAPI.setUserStatus(status).then(() => {
          dispatch(setUserStatus(status));
       })
    }

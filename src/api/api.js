@@ -35,7 +35,11 @@ export const profileAPI = {
    },
 
    setUserStatus(status) {
-      return instance.put(`profile/status`, { status: status }).then(response => response.data.resultCode === 0 && true);
+      return instance.put(`profile/status`, { status: status }).then(response => {
+         if (response.data.resultCode === 0) {
+            return true;
+         }
+      });
    }
 }
 
