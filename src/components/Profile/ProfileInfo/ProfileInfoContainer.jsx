@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import ProfileInfo from "./ProfileInfo";
+import { compose } from "redux";
 
 const mapStateToProps = (state) => {
    return {
@@ -8,6 +9,6 @@ const mapStateToProps = (state) => {
    }
 }
 
-const ProfileInfoContainer = connect(mapStateToProps)(ProfileInfo);
-
-export default ProfileInfoContainer;
+export default compose(
+   connect(mapStateToProps)
+)(ProfileInfo);

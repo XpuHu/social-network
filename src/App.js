@@ -8,6 +8,7 @@ import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
+import Login from "./components/Login/Login";
 
 const App = () => {
    return (
@@ -34,6 +35,9 @@ const App = () => {
                   </Route>
                   <Route path='/settings'>
                      <Settings />
+                  </Route>
+                  <Route path='/login'>
+                     <Login />
                   </Route>
                </div>
             </div>

@@ -5,6 +5,7 @@ import {
 } from '../../../redux/profileReducer';
 import MyPosts from './MyPosts';
 import { connect } from "react-redux";
+import { compose } from "redux";
 
 const mapStateToProps = (state) => {
    return {
@@ -25,6 +26,6 @@ const mapDispatchToProps = (dispatch) => {
    }
 }
 
-const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts);
-
-export default MyPostsContainer;
+export default compose(
+   connect(mapStateToProps, mapDispatchToProps)
+)(MyPosts);

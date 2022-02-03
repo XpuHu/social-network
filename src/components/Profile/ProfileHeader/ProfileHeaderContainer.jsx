@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import ProfileHeader from "./ProfileHeader";
+import { compose } from "redux";
 
 const mapStateToProps = (state) => {
    return {
@@ -7,6 +8,6 @@ const mapStateToProps = (state) => {
    }
 }
 
-const ProfileHeaderContainer = connect(mapStateToProps)(ProfileHeader);
-
-export default ProfileHeaderContainer;
+export default compose(
+   connect(mapStateToProps)
+)(ProfileHeader);
