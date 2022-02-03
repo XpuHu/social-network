@@ -1,5 +1,6 @@
 import styles from './ProfileInfo.module.css';
 import userPhoto from '../../../assets/images/avatar.png';
+import ProfileStatus from "./ProfileStatus";
 
 const ProfileInfo = ({ profile }) => {
    const contacts = Object.entries(profile.contacts).map(([source, value]) => {
@@ -19,8 +20,11 @@ const ProfileInfo = ({ profile }) => {
          <div className={ styles.profileInfo }>
             <div className={ styles.commonInfo }>
                <h1>{ profile.fullName }</h1>
-               <p>Ищу работу: { profile.lookingForAJob ? 'Да' : 'Нет' }</p>
-               <p><i>{ profile.lookingForAJobDescription }</i></p>
+               <ProfileStatus status={'huyatus'}/>
+               <div className={styles.jobInfo}>
+                  <p>Ищу работу: { profile.lookingForAJob ? 'Да' : 'Нет' }</p>
+                  <p><i>{ profile.lookingForAJobDescription }</i></p>
+               </div>
             </div>
             <div className={ styles.detailedInfo }>
                <p>{ profile.aboutMe }</p>

@@ -36,3 +36,16 @@
 .contactValue {
     width: 100%;
 }
+
+.status {
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+.jobInfo {
+    margin-bottom: 15px;
+}
+
+.jobInfo p {
+    margin: 0;
+}
