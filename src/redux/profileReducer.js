@@ -110,4 +110,12 @@ export const getUserStatus = (userId) => {
    }
 }
 
+export const updateUserStatus = (status) => {
+   return (dispatch) => {
+      profileAPI.setUserStatus(status).then(status => {
+         dispatch(setUserStatus(status));
+      })
+   }
+}
+
 export default profileReducer;

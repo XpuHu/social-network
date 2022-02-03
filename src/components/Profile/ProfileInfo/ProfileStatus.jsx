@@ -1,16 +1,30 @@
 import React from "react";
 import styles from './ProfileInfo.module.css';
+import { updateUserStatus } from "../../../redux/profileReducer";
 
 class ProfileStatus extends React.Component {
 
    state = {
-      editMode: false
+      editMode: false,
+      status: this.props.status || '------'
    }
 
    toggleEditMode = () => {
-      console.log(this);
       this.setState({
          editMode: !this.state.editMode
+      })
+   }
+
+   deactivateEditMode = () => {
+      this.setState({
+         editMode: false
+      });
+      this.props.updateUserStatus(this.state.status);
+   }
+
+   onStatusChange = (e) => {
+      this.setState({
+         status: e.currentTarget.value
       })
    }
 
@@ -24,12 +38,12 @@ class ProfileStatus extends React.Component {
             }
             {this.state.editMode &&
                <div>
-                  <input autoFocus={true} onBlur={this.toggleEditMode} value={this.props.status}/>
+                  <input onChange={this.onStatusChange} autoFocus={true} onBlur={this.deactivateEditMode} value={this.state.status || '--------'}/>
                </div>
             }
          </div>
       );
    }
-};
+}
 
 export default ProfileStatus;

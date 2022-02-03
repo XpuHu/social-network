@@ -1,8 +1,9 @@
 import styles from './ProfileInfo.module.css';
 import userPhoto from '../../../assets/images/avatar.png';
 import ProfileStatus from "./ProfileStatus";
+import { updateUserStatus } from "../../../redux/profileReducer";
 
-const ProfileInfo = ({ profile }) => {
+const ProfileInfo = ({ profile, updateUserStatus }) => {
    const contacts = Object.entries(profile.contacts).map(([source, value]) => {
       return (
          <div className={ styles.contactRow }>
@@ -20,7 +21,7 @@ const ProfileInfo = ({ profile }) => {
          <div className={ styles.profileInfo }>
             <div className={ styles.commonInfo }>
                <h1>{ profile.fullName }</h1>
-               <ProfileStatus status={ profile.status } />
+               <ProfileStatus status={ profile.status } updateUserStatus={ updateUserStatus } />
                <div className={ styles.jobInfo }>
                   <p>Ищу работу: { profile.lookingForAJob ? 'Да' : 'Нет' }</p>
                   <p><i>{ profile.lookingForAJobDescription }</i></p>
