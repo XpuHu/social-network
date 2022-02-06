@@ -1,21 +1,24 @@
-form div label {
+form.loginForm div label {
     display: block;
 }
 
-form div {
+form.loginForm div {
     margin-bottom: 10px;
     margin-left: 0;
     margin-right: 5px;
 }
 
-form .checkbox {
+form.loginForm .checkbox {
     display: flex;
     align-items: baseline;
     gap: 5px;
 }
 
-form .checkbox input {
+form.loginForm .checkbox input {
     margin: 0;
 }
 
+.errored {
+    border: 2px solid red;
+}
 

@@ -1,12 +1,15 @@
 import React from "react";
 import styles from './Login.module.css';
 import { ErrorMessage, Field, Form, Formik } from "formik";
+import { LoginSchema } from "../../utils/validators/validators";
+import { Input } from "../Common/FormsControls/FormsControls";
 
 const LoginForm = (props) => {
 
    const submit = (values, { setSubmitting }) => {
       const { email, password, rememberMe } = values;
-      props.loginUser(email, password, rememberMe);
+      //props.loginUser(email, password, rememberMe);
+      console.log(values)
       setSubmitting(false);
    }
 
@@ -31,15 +34,16 @@ const LoginForm = (props) => {
             rememberMe: false
          } }
 
-         validate={ validate }
+         // validate={ validate }
+         validationSchema={LoginSchema}
 
          onSubmit={ submit }
       >
-         { ({ isSubmitting }) => (
-            <Form>
+         { ({ errors, isSubmitting }) => (
+            <Form className={styles.loginForm}>
                <div>
                   {/*<label htmlFor={ 'email' }>Login</label>*/ }
-                  <Field placeholder={ 'Email' } name={ 'email' } id={ 'email' } />
+                  <Field placeholder={ 'Email' } name={ 'email' } id={ 'email' }/>
                   <ErrorMessage name="email" component="div" />
                </div>
 

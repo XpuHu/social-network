@@ -1,6 +1,8 @@
 import React from 'react';
 import styles from './NewMessageForm.module.css';
-import { ErrorMessage, Field, Form, Formik } from "formik";
+import { Field, Form, Formik } from "formik";
+import { NewMessageSchema } from "../../../utils/validators/validators";
+import { Input } from "../FormsControls/FormsControls";
 
 const NewMessageForm = (props) => {
 
@@ -10,14 +12,6 @@ const NewMessageForm = (props) => {
       resetForm();
    }
 
-   const validate = (values) => {
-      const errors = {};
-      if ( !values.newMessage) {
-         errors.newMessage = 'Required';
-      }
-      return errors;
-   }
-
    return (
       <Formik
          initialValues={ {
@@ -25,12 +19,11 @@ const NewMessageForm = (props) => {
          } }
 
          onSubmit={ submit }
-         validate={ validate }
+         validationSchema={NewMessageSchema}
       >
          { ({ isSubmitting }) => (
-            <Form>
-               <Field name={ 'newMessage' } id={ 'newMessage' } className={ styles.newPostText } />
-               <ErrorMessage name="newMessage" component="div" />
+            <Form className={styles.messageForm}>
+               <Field name={ 'newMessage' } id={ 'newMessage' } className={ styles.newMessageText } component={Input} />
 
                <button type={ 'submit' } disabled={ isSubmitting } className={ styles.submit }>send</button>
             </Form>

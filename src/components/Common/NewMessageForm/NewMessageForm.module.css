@@ -1,14 +1,18 @@
-form {
+form.messageForm {
     width: 100%;
     display: flex;
     /*flex-flow: column;*/
     /*align-items: flex-end;*/
-    align-items: center;
+    /*align-items: center;*/
     gap: 10px;
     /*justify-content: space-around;*/
 }
 
-.newPostText {
+form.messageForm div {
+    width: 100%;
+}
+
+.newMessageText {
     width: 98%;
     height: 25px;
 
@@ -16,12 +20,12 @@ form {
     background-color: rgba(255, 255, 255, 0.75);
     border-radius: 5px;
     padding: 2px 5px;
+    margin: 1px;
 }
 
-form .submit {
+form.messageForm .submit {
     width: 50px;
     height: 32px;
 
     border-radius: 5px;
 }
-
