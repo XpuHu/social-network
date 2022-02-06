@@ -1,7 +1,5 @@
 import MyPostsContainer from './MyPosts/MyPostsContainer';
 import Preloader from "../Common/Preloader/Preloader";
-import ProfileInfo from "./ProfileInfo/ProfileInfo";
-import { updateUserStatus } from "../../redux/profileReducer";
 import ProfileInfoContainer from "./ProfileInfo/ProfileInfoContainer";
 
 const Profile = (props) => {

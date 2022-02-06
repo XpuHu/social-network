@@ -3,9 +3,9 @@ import userPhoto from '../../../assets/images/avatar.png';
 import ProfileStatus from "./ProfileStatus";
 
 const ProfileInfo = ({ profile, updateUserStatus, status }) => {
-   const contacts = Object.entries(profile.contacts).map(([source, value]) => {
+   const contacts = Object.entries(profile.contacts).map(([source, value], index) => {
       return (
-         <div className={ styles.contactRow }>
+         <div className={ styles.contactRow } key={index}>
             <div className={ styles.contactLabel }>{ source }</div>
             <div className={ styles.contactValue }>{ value ? value : '-' }</div>
          </div>

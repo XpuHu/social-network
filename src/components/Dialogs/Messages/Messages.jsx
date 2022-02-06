@@ -1,6 +1,6 @@
 import styles from './Messages.module.css';
 import Message from './Message/Message';
-import NewMessageContainer from './NewMessage/NewMessageContainer';
+import NewDialogMessageContainer from './NewDialogMessageContainer';
 
 const Messages = ({ messages }) => {
 
@@ -11,7 +11,7 @@ const Messages = ({ messages }) => {
    return (
       <div className={styles.messages}>
          <div className={styles.messagesBlock}>{messagesElements}</div>
-         <NewMessageContainer />
+         <NewDialogMessageContainer />
       </div>
    );
 };

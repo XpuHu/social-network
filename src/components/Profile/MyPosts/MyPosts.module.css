@@ -1,40 +1,82 @@
-.posts .newPost {
-    border: 1px solid rgba(255, 255, 255, 0.33);
-    border-radius: 5px;
-    padding: 20px;
- 
-    display: grid;
-    grid-template-columns: 1fr 9fr;
-    grid-row: 10fr 2fr;
-    grid-template-areas: 
-         "avatar input" 
-         "avatar submit";
-   gap: 10px;
- }
- 
- .posts .newPost .avatar {
-    grid-area: avatar;
-    padding: 0;
-    padding-top: 0;
-    text-align: center;
- }
- 
- .posts .newPost .avatar img {
+/*.posts .newPost {*/
+/*    border: 1px solid rgba(255, 255, 255, 0.33);*/
+/*    border-radius: 5px;*/
+/*    padding: 20px;*/
+/* */
+/*    display: grid;*/
+/*    grid-template-columns: 1fr 9fr;*/
+/*    grid-row: 10fr 2fr;*/
+/*    grid-template-areas: */
+/*         "avatar input" */
+/*         "avatar submit";*/
+/*   gap: 10px;*/
+/* }*/
+/* */
+/* .posts .newPost .avatar {*/
+/*    grid-area: avatar;*/
+/*    padding: 0;*/
+/*    padding-top: 0;*/
+/*    text-align: center;*/
+/* }*/
+/* */
+/* .posts .newPost .avatar img {*/
+/*    width: 75px;*/
+/*    border-radius: 150px;*/
+/* }*/
+/* */
+/* .posts .newPost .text {*/
+/*    grid-area: input;*/
+/*    border: 1px solid rgba(255, 255, 255, 0.33);*/
+/*    background-color: rgba(255, 255, 255, 0.75);*/
+/*    border-radius: 5px;*/
+/*     margin-bottom: 10px;*/
+
+/* }*/
+/* */
+/* .posts .newPost .submit {*/
+/*    grid-area: submit;*/
+/*    max-width: 60px;*/
+/*    justify-self: end;*/
+/* }*/
+
+
+.newPostBlock {
+    display: flex;
+    gap: 20px;
+}
+
+.avatar {
     width: 75px;
-    border-radius: 150px;
- }
- 
- .posts .newPost .text {
-    grid-area: input;
-    border: 1px solid rgba(255, 255, 255, 0.33);
-    background-color: rgba(255, 255, 255, 0.75);
-    border-radius: 5px;
-     margin-bottom: 10px;
-     
- }
- 
- .posts .newPost .submit {
-    grid-area: submit;
-    max-width: 60px;
-    justify-self: end;
- }
+}
+
+.avatar img {
+    width: 100%;
+}
+
+/*.newPostBlock form {*/
+/*    width: 100%;*/
+/*    display: flex;*/
+/*    !*flex-flow: column;*!*/
+/*    !*align-items: flex-end;*!*/
+/*    align-items: center;*/
+/*    gap: 10px;*/
+/*    !*justify-content: space-around;*!*/
+/*}*/
+
+/*.newPostText {*/
+/*    width: 98%;*/
+/*    height: 25px;*/
+
+/*    border: 1px solid rgba(255, 255, 255, 0.33);*/
+/*    background-color: rgba(255, 255, 255, 0.75);*/
+/*    border-radius: 5px;*/
+/*    padding: 2px 5px;*/
+/*}*/
+
+/*form .submit {*/
+/*    width: 50px;*/
+/*    height: 32px;*/
+
+/*    border-radius: 5px;*/
+/*}*/
+

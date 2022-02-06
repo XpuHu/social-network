@@ -3,7 +3,6 @@ import styles from './Users.module.css';
 import userPhoto from '../../assets/images/avatar.png';
 import Preloader from "../Common/Preloader/Preloader";
 import { NavLink } from "react-router-dom";
-import { toggleFollow } from "../../redux/usersReducer";
 
 const Users = (props) => {
 

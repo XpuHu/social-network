@@ -50,5 +50,21 @@ export const authAPI = {
             return response.data.data;
          }
       })
+   },
+
+   loginUser(email, password, rememberMe) {
+      return instance.post(`auth/login`,{email: email, password: password, rememberMe: rememberMe}).then(response => {
+         if (response.data.resultCode === 0) {
+            return response.data.data.userId;
+         }
+      });
+   },
+
+   logoutUser() {
+      return instance.delete(`auth/login`).then(response => {
+         if (response.data.resultCode === 0) {
+            return true;
+         }
+      });
    }
 }

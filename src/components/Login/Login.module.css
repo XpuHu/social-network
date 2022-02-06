@@ -1,0 +1,21 @@
+form div label {
+    display: block;
+}
+
+form div {
+    margin-bottom: 10px;
+    margin-left: 0;
+    margin-right: 5px;
+}
+
+form .checkbox {
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+}
+
+form .checkbox input {
+    margin: 0;
+}
+
+

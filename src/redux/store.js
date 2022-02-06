@@ -1,6 +1,6 @@
-import dialogsReducer from './dialogsReducer';
-import profileReducer from './profileReducer';
-import sidebarReducer from './sidebarReducer';
+// import dialogsReducer from './dialogsReducer';
+// import profileReducer from './profileReducer';
+// import sidebarReducer from './sidebarReducer';
 
 const store = {
    _state: {
@@ -141,16 +141,16 @@ const store = {
    getState() {
       return this._state;
    },
-
-   dispatch(action) {
-      let { profilePage, dialogsPage, sidebar } = this._state;
-
-      profilePage = profileReducer(profilePage, action);
-      dialogsPage = dialogsReducer(dialogsPage, action);
-      sidebar = sidebarReducer(sidebar, action);
-
-      this._callSubscriber();
-   },
+   //
+   // dispatch(action) {
+   //    let { profilePage, dialogsPage, sidebar } = this._state;
+   //
+   //    profilePage = profileReducer(profilePage, action);
+   //    dialogsPage = dialogsReducer(dialogsPage, action);
+   //    sidebar = sidebarReducer(sidebar, action);
+   //
+   //    this._callSubscriber();
+   // },
 };
 
 export default store;
