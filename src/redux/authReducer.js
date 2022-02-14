@@ -16,21 +16,12 @@ const authReducer = (state = initialState, action) => {
       case SET_USER_DATA:
          return {
             ...state,
-            ...action.data,
-            isAuth: true
+            ...action.payload
          }
       case SET_USER_ID:
          return {
             ...state,
             userId: action.userId
-         }
-      case SET_AUTH_FALSE:
-         return {
-            ...state,
-            userId: null,
-            email: null,
-            login: null,
-            isAuth: false
          }
       default:
          return state;
@@ -38,10 +29,7 @@ const authReducer = (state = initialState, action) => {
 }
 
 // ACTION CREATORS
-const setAuthUserData = (userId, email, login) => ( { type: SET_USER_DATA, data: { userId, email, login } } );
-const setUserId = (userId) => ( { type: SET_USER_ID, userId } )
-const setIsAuthFalse = () => ( { type: SET_AUTH_FALSE } )
-
+const setAuthUserData = (userId, email, login, isAuth) => ( { type: SET_USER_DATA, payload: { userId, email, login, isAuth } } );
 
 // THUNK CREATORS
 export const getUserAuth = () => {
@@ -49,17 +37,17 @@ export const getUserAuth = () => {
       authAPI.getAuthUserData().then(data => {
          if (data !== undefined) {
             let { id, email, login } = data;
-            dispatch(setAuthUserData(id, email, login));
+            dispatch(setAuthUserData(id, email, login, true));
          }
 
       })
    }
 }
 
-export const loginUser = (email, password, rememberMe) => {
+export const loginUser = (email, password, rememberMe, setStatus) => {
    return (dispatch) => {
-      authAPI.loginUser(email, password, rememberMe).then(userId => {
-         dispatch(setUserId(userId));
+      authAPI.loginUser(email, password, rememberMe, setStatus).then(() => {
+         dispatch(getUserAuth());
       })
    }
 }
@@ -67,10 +55,9 @@ export const loginUser = (email, password, rememberMe) => {
 export const logoutUser = () => {
    return (dispatch) => {
       authAPI.logoutUser().then(() => {
-         dispatch(setIsAuthFalse());
+         dispatch(setAuthUserData(null, null, null, false));
       })
    }
 }
-
 
 export default authReducer;

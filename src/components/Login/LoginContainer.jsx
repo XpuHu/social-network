@@ -1,12 +1,17 @@
 import React from "react";
 import { loginUser } from "../../redux/authReducer";
 import { compose } from "redux";
-import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 import { connect } from "react-redux";
 import LoginForm from "./LoginForm";
+import { Redirect } from "react-router-dom";
 
 class LoginContainer extends React.Component {
    render() {
+
+      if(this.props.isAuth) {
+         return <Redirect to={'profile'} />
+      }
+
       return (
          <div>
             <h1>Login</h1>
@@ -17,10 +22,11 @@ class LoginContainer extends React.Component {
 }
 
 export const mapStateToProps = (state) => {
-   return {}
+   return {
+      isAuth: state.auth.isAuth
+   }
 }
 
 export default compose(
-   withAuthRedirect,
    connect( mapStateToProps, { loginUser})
 )(LoginContainer);

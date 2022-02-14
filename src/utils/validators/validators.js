@@ -6,5 +6,7 @@ export const LoginSchema = Yup.object().shape({
 });
 
 export const NewMessageSchema = Yup.object().shape({
-   newMessage: Yup.string().max(10, 'Too long').required('Required')
+   newMessage: Yup.string().max(10, 'Too long').required('')
 });
+
+

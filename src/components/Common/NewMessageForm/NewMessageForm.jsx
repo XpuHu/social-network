@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './NewMessageForm.module.css';
 import { Field, Form, Formik } from "formik";
 import { NewMessageSchema } from "../../../utils/validators/validators";
-import { Input } from "../FormsControls/FormsControls";
+import { Input, Textarea } from "../FormsControls/FormsControls";
 
 const NewMessageForm = (props) => {
 

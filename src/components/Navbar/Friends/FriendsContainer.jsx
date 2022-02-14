@@ -4,7 +4,8 @@ import { compose } from "redux";
 
 const mapStateToProps = (state) => {
    return {
-      friends: state.sidebar.friends
+      friends: state.sidebar.friends,
+      followedUsers: state.usersPage.users.filter((user) => user.followed === true)
    }
 }
 

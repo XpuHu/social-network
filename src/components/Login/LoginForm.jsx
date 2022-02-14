@@ -1,30 +1,16 @@
 import React from "react";
 import styles from './Login.module.css';
-import { ErrorMessage, Field, Form, Formik } from "formik";
+import { Field, Form, Formik } from "formik";
 import { LoginSchema } from "../../utils/validators/validators";
 import { Input } from "../Common/FormsControls/FormsControls";
 
 const LoginForm = (props) => {
 
-   const submit = (values, { setSubmitting }) => {
+   const submit = (values, { setStatus, setSubmitting }) => {
       const { email, password, rememberMe } = values;
-      //props.loginUser(email, password, rememberMe);
-      console.log(values)
+      props.loginUser(email, password, rememberMe, setStatus);
       setSubmitting(false);
    }
-
-   const validate = (values) => {
-      const errors = {};
-      if ( !values.email) {
-         errors.email = 'Required';
-      } else if (
-         !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-      ) {
-         errors.email = 'Invalid email address';
-      }
-      return errors;
-   }
-
 
    return (
       <Formik
@@ -35,23 +21,19 @@ const LoginForm = (props) => {
          } }
 
          // validate={ validate }
-         validationSchema={LoginSchema}
+         validationSchema={ LoginSchema }
 
          onSubmit={ submit }
       >
-         { ({ errors, isSubmitting }) => (
-            <Form className={styles.loginForm}>
-               <div>
-                  {/*<label htmlFor={ 'email' }>Login</label>*/ }
-                  <Field placeholder={ 'Email' } name={ 'email' } id={ 'email' }/>
-                  <ErrorMessage name="email" component="div" />
-               </div>
+         { ({ errors, touched, isSubmitting, status }) => (
+            <Form className={ styles.loginForm }>
 
-               <div>
-                  {/*<label htmlFor={ 'password' }>Password</label>*/ }
-                  <Field placeholder={ 'Password' } name={ 'password' } id={ 'password' } type={ 'password' } />
-                  <ErrorMessage name="password" component="div" />
-               </div>
+               {/*<label htmlFor={ 'email' }>Login</label>*/ }
+               <Field placeholder={ 'Email' } name={ 'email' } id={ 'email' } component={ Input } />
+
+               {/*<label htmlFor={ 'password' }>Password</label>*/ }
+               <Field placeholder={ 'Password' } name={ 'password' } id={ 'password' } type={ 'password' }
+                      component={ Input } />
 
                <div className={ styles.checkbox }>
                   <Field type={ 'checkbox' } name={ 'rememberMe' } id={ 'rememberMe' } />
@@ -59,6 +41,8 @@ const LoginForm = (props) => {
                </div>
 
                <button type={ 'submit' } disabled={ isSubmitting }>Login</button>
+
+               { status !== undefined ? <span className={styles.errored}>{ status }</span> : null }
             </Form>
          ) }
       </Formik>

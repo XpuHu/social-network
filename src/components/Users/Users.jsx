@@ -83,7 +83,7 @@ const Users = (props) => {
          <h2 className={ styles.usersHeader }>Users</h2>
          <div className={ styles.pagination }>
             { pagesToShow.map(p => {
-               return <span className={ props.currentPage === p && styles.selectedPage }
+               return <span className={ props.currentPage === p ? styles.selectedPage : null }
                             onClick={ () => {
                                props.setCurrentPageHandler(p)
                             }

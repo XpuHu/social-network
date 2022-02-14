@@ -6,5 +6,6 @@ input.errored {
 span.errored {
     color: red;
     font-size: small;
+    margin-left: 5px;
 }
 

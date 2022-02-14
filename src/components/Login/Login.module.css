@@ -1,3 +1,7 @@
+h1 {
+    margin-top: 0;
+}
+
 form.loginForm div label {
     display: block;
 }
@@ -19,6 +23,7 @@ form.loginForm .checkbox input {
 }
 
 .errored {
-    border: 2px solid red;
+    color: red;
+    margin-left: 25px;
 }
 

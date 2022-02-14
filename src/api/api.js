@@ -52,10 +52,12 @@ export const authAPI = {
       })
    },
 
-   loginUser(email, password, rememberMe) {
+   loginUser(email, password, rememberMe, setStatus) {
       return instance.post(`auth/login`,{email: email, password: password, rememberMe: rememberMe}).then(response => {
          if (response.data.resultCode === 0) {
-            return response.data.data.userId;
+            return true;
+         } else {
+            setStatus(response.data.messages[0]);
          }
       });
    },
