@@ -1,11 +1,11 @@
 import { connect } from "react-redux";
 import Friends from "./Friends";
 import { compose } from "redux";
+import { selectFriends } from "../../../redux/selectors/usersSelectors";
 
 const mapStateToProps = (state) => {
    return {
-      friends: state.sidebar.friends,
-      followedUsers: state.usersPage.users.filter((user) => user.followed === true)
+      friends: selectFriends(state)
    }
 }
 

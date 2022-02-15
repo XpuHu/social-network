@@ -3,14 +3,14 @@ import styles from './Friends.module.css';
 import userPhoto from "../../../assets/images/avatar.png";
 
 const Friends = (props) => {
-   if (props.followedUsers.length === 0) {
+   if (props.friends.length === 0) {
       return null;
    }
    return (
       <div className={ styles.friendsBlock }>
          <h2>Friends</h2>
          <div className={ styles.friendsList }>
-            { props.followedUsers.map((friend) => (
+            { props.friends.map((friend) => (
                <div className={ styles.friend } key={ friend.id }>
                   <NavLink to={ `/profile/${ friend.id }` } activeClassName={ styles.active }>
                      <img src={ friend.photos.small ? friend.photos.small : userPhoto } alt={ 'friend' } />

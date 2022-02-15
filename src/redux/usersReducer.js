@@ -48,7 +48,8 @@ const initialState = {
    totalUsersCount: 0,
    pageSize: 5,
    isFetching: true,
-   followingInProgress: []
+   followingInProgress: [],
+   followedUsers: []
 }
 
 const usersReducer = (state = initialState, action) => {
@@ -105,7 +106,7 @@ const usersReducer = (state = initialState, action) => {
             ...state,
             followingInProgress: action.isFetching
                ? [...state.followingInProgress, action.userId]
-               : state.followingInProgress.filter(userId => userId !== action.userId)
+               : state.followingInProgress.filter(userId => userId !== action.userId),
          }
       default:
          return state;

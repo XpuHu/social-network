@@ -1,12 +1,17 @@
 import { connect } from "react-redux";
 import ProfileInfo from "./ProfileInfo";
 import { compose } from "redux";
+import {
+   selectAvatar,
+   selectDescription,
+   selectStatus
+} from "../../../redux/selectors/profileSelectors";
 
 const mapStateToProps = (state) => {
    return {
-      description: state.profilePage.profile.aboutMe,
-      avatar: state.profilePage.profile.photos.large,
-      status: state.profilePage.status
+      description: selectDescription(state),
+      avatar: selectAvatar(state),
+      status: selectStatus(state)
    }
 }
 

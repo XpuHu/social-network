@@ -2,11 +2,12 @@ import { addNewPostCreator } from '../../../redux/profileReducer';
 import MyPosts from './MyPosts';
 import { connect } from "react-redux";
 import { compose } from "redux";
+import { selectAvatar, selectPosts } from "../../../redux/selectors/profileSelectors";
 
 const mapStateToProps = (state) => {
    return {
-      posts: state.profilePage.posts,
-      avatar: state.profilePage.profile.photos.small
+      posts: selectPosts(state),
+      avatar: selectAvatar(state)
    }
 }
 

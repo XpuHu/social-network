@@ -2,7 +2,6 @@ import { authAPI } from "../api/api";
 
 const SET_USER_DATA = 'SET_USER_DATA';
 const SET_USER_ID = 'SET_USER_ID';
-const SET_AUTH_FALSE = 'SET_AUTH_FALSE';
 
 const initialState = {
    userId: null,
@@ -34,12 +33,11 @@ const setAuthUserData = (userId, email, login, isAuth) => ( { type: SET_USER_DAT
 // THUNK CREATORS
 export const getUserAuth = () => {
    return (dispatch) => {
-      authAPI.getAuthUserData().then(data => {
+      return authAPI.getAuthUserData().then(data => {
          if (data !== undefined) {
             let { id, email, login } = data;
             dispatch(setAuthUserData(id, email, login, true));
          }
-
       })
    }
 }

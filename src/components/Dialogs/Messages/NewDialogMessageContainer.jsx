@@ -13,10 +13,6 @@ class NewDialogMessageContainer extends React.Component {
    }
 }
 
-const mapStateToProps = (state) => {
-   return {}
-}
-
 const mapDispatchToProps = (dispatch) => {
    return {
       addNewMessage: (newMessageText) => {
@@ -26,5 +22,5 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default compose(
-   connect(mapStateToProps, mapDispatchToProps)
+   connect(null, mapDispatchToProps)
 )(NewDialogMessageContainer);

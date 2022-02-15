@@ -2,10 +2,10 @@ import React from "react";
 import Profile from "./Profile";
 import { connect } from "react-redux";
 import { getUserProfile, getUserStatus, updateUserStatus } from "../../redux/profileReducer";
-import { Redirect, withRouter } from "react-router-dom";
-import { withAuthRedirect } from "../../hoc/withAuthRedirect";
+import { withRouter } from "react-router-dom";
 import { compose } from "redux";
-import Preloader from "../Common/Preloader/Preloader";
+import { selectProfile } from "../../redux/selectors/profileSelectors";
+import { selectUserId } from "../../redux/selectors/authSelectors";
 
 class ProfileContainer extends React.Component {
 
@@ -38,8 +38,8 @@ class ProfileContainer extends React.Component {
 
 const mapStateToProps = (state) => {
    return {
-      profile: state.profilePage.profile,
-      userId: state.auth.userId
+      profile: selectProfile(state),
+      userId: selectUserId(state)
    }
 }
 

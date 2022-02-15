@@ -87,7 +87,9 @@ const Users = (props) => {
                             onClick={ () => {
                                props.setCurrentPageHandler(p)
                             }
-                            }>{ p }</span>
+                            }
+                            key={ p }
+               >{ p }</span>
             }) }
          </div>
          { props.isFetching ? <Preloader /> : null }

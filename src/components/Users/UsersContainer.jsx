@@ -3,6 +3,13 @@ import Users from "./Users";
 import { getUsers, toggleFollow } from "../../redux/usersReducer";
 import React from "react";
 import { compose } from "redux";
+import {
+  selectAllUsers,
+  selectCurrentPage,selectFollowingInProgress,
+  selectIsFetching,
+  selectPageSize,
+  selectTotalUsersCount
+} from "../../redux/selectors/usersSelectors";
 
 class UsersContainer extends React.Component {
 
@@ -23,12 +30,12 @@ class UsersContainer extends React.Component {
 
 const mapStateToProps = (state) => {
    return {
-      users: state.usersPage.users,
-      currentPage: state.usersPage.currentPage,
-      pageSize: state.usersPage.pageSize,
-      totalUsersCount: state.usersPage.totalUsersCount,
-      isFetching: state.usersPage.isFetching,
-      followingInProgress: state.usersPage.followingInProgress
+      users:selectAllUsers(state),
+      currentPage:selectCurrentPage(state),
+      pageSize:selectPageSize(state),
+      totalUsersCount:selectTotalUsersCount(state),
+      isFetching:selectIsFetching(state),
+      followingInProgress:selectFollowingInProgress(state)
    }
 }
 

@@ -4,6 +4,7 @@ import { compose } from "redux";
 import { connect } from "react-redux";
 import LoginForm from "./LoginForm";
 import { Redirect } from "react-router-dom";
+import { selectIsAuth } from "../../redux/selectors/authSelectors";
 
 class LoginContainer extends React.Component {
    render() {
@@ -23,7 +24,7 @@ class LoginContainer extends React.Component {
 
 export const mapStateToProps = (state) => {
    return {
-      isAuth: state.auth.isAuth
+      isAuth: selectIsAuth(state)
    }
 }
 

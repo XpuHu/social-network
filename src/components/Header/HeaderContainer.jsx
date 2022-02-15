@@ -3,6 +3,7 @@ import Header from "./Header";
 import { connect } from "react-redux";
 import { logoutUser } from "../../redux/authReducer";
 import { compose } from "redux";
+import { selectIsAuth, selectLogin, selectUserId } from "../../redux/selectors/authSelectors";
 
 class HeaderContainer extends React.Component {
 
@@ -15,9 +16,9 @@ class HeaderContainer extends React.Component {
 
 const mapStateToProps = (state) => {
    return {
-      isAuth: state.auth.isAuth,
-      userId: state.auth.userId,
-      login: state.auth.login
+      isAuth: selectIsAuth(state),
+      userId: selectUserId(state),
+      login: selectLogin(state)
    }
 }
 

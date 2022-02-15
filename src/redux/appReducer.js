@@ -25,8 +25,7 @@ const setInitialized = () => ( { type: SET_INITIALIZED } );
 export const initialize = () => {
    return (dispatch) => {
       let promise = dispatch(getUserAuth());
-      Promise.all([promise])
-         .then(() => {
+      Promise.all([promise]).then(() => {
             dispatch(setInitialized());
          })
    }
