@@ -6,20 +6,18 @@ import LoginForm from "./LoginForm";
 import { Redirect } from "react-router-dom";
 import { selectIsAuth } from "../../redux/selectors/authSelectors";
 
-class LoginContainer extends React.Component {
-   render() {
+const LoginContainer = (props) => {
 
-      if(this.props.isAuth) {
-         return <Redirect to={'profile'} />
-      }
-
-      return (
-         <div>
-            <h1>Login</h1>
-            <LoginForm loginUser={ this.props.loginUser } />
-         </div>
-      )
+   if (props.isAuth) {
+      return <Redirect to={ 'profile' } />
    }
+
+   return (
+      <div>
+         <h1>Login</h1>
+         <LoginForm loginUser={ props.loginUser } />
+      </div>
+   )
 }
 
 export const mapStateToProps = (state) => {
@@ -29,5 +27,5 @@ export const mapStateToProps = (state) => {
 }
 
 export default compose(
-   connect( mapStateToProps, { loginUser})
+   connect(mapStateToProps, { loginUser })
 )(LoginContainer);

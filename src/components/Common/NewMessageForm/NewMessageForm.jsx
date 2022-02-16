@@ -7,7 +7,7 @@ import { Input } from "../FormsControls/FormsControls";
 const NewMessageForm = (props) => {
 
    const submit = (values, { setSubmitting, resetForm }) => {
-      props.addNewMessageHandler(values.newMessage);
+      props.addNewMessage(values.newMessage);
       setSubmitting(false);
       resetForm();
    }

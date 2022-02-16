@@ -1,41 +1,42 @@
 import { connect } from "react-redux";
 import Users from "./Users";
 import { getUsers, toggleFollow } from "../../redux/usersReducer";
-import React from "react";
+import React, { useEffect } from "react";
 import { compose } from "redux";
 import {
-  selectAllUsers,
-  selectCurrentPage,selectFollowingInProgress,
-  selectIsFetching,
-  selectPageSize,
-  selectTotalUsersCount
+   selectAllUsers,
+   selectCurrentPage,
+   selectFollowingInProgress,
+   selectIsFetching,
+   selectPageSize,
+   selectTotalUsersCount
 } from "../../redux/selectors/usersSelectors";
 
-class UsersContainer extends React.Component {
+const UsersContainerWithHooks = (props) => {
 
-   componentDidMount() {
-      this.props.getUsers(this.props.currentPage, this.props.pageSize);
+   const { currentPage, pageSize, getUsers } = props;
+
+   useEffect(() => {
+      getUsers(currentPage, pageSize);
+   }, [currentPage, pageSize, getUsers])
+
+   const setCurrentPageHandler = (currentPage) => {
+      getUsers(currentPage, pageSize);
    }
 
-   setCurrentPageHandler = (currentPage) => {
-      this.props.getUsers(currentPage, this.props.pageSize);
-   }
-
-   render() {
-      return <Users { ...this.props }
-                    toggleFollow={ this.props.toggleFollow }
-                    setCurrentPageHandler={ this.setCurrentPageHandler } />
-   }
+   return <Users { ...props }
+                 toggleFollow={ props.toggleFollow }
+                 setCurrentPageHandler={ setCurrentPageHandler } />
 }
 
 const mapStateToProps = (state) => {
    return {
-      users:selectAllUsers(state),
-      currentPage:selectCurrentPage(state),
-      pageSize:selectPageSize(state),
-      totalUsersCount:selectTotalUsersCount(state),
-      isFetching:selectIsFetching(state),
-      followingInProgress:selectFollowingInProgress(state)
+      users: selectAllUsers(state),
+      currentPage: selectCurrentPage(state),
+      pageSize: selectPageSize(state),
+      totalUsersCount: selectTotalUsersCount(state),
+      isFetching: selectIsFetching(state),
+      followingInProgress: selectFollowingInProgress(state)
    }
 }
 
@@ -60,5 +61,5 @@ const mapStateToProps = (state) => {
 // }
 
 export default compose(
-   connect(mapStateToProps,{ getUsers, toggleFollow })
-)(UsersContainer);
+   connect(mapStateToProps, { getUsers, toggleFollow })
+)(UsersContainerWithHooks);

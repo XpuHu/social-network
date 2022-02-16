@@ -1,6 +1,6 @@
 import styles from './ProfileInfo.module.css';
 import userPhoto from '../../../assets/images/avatar.png';
-import ProfileStatus from "./ProfileStatus";
+import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 
 const ProfileInfo = ({ profile, updateUserStatus, status }) => {
    const contacts = Object.entries(profile.contacts).map(([source, value], index) => {
@@ -20,7 +20,7 @@ const ProfileInfo = ({ profile, updateUserStatus, status }) => {
          <div className={ styles.profileInfo }>
             <div className={ styles.commonInfo }>
                <h1>{ profile.fullName }</h1>
-               <ProfileStatus status={ status } updateUserStatus={ updateUserStatus } />
+               <ProfileStatusWithHooks status={ status } updateUserStatus={ updateUserStatus } />
                <div className={ styles.jobInfo }>
                   <p>Ищу работу: { profile.lookingForAJob ? 'Да' : 'Нет' }</p>
                   <p><i>{ profile.lookingForAJobDescription }</i></p>
