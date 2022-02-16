@@ -1,0 +1,22 @@
+.pagination {
+   margin: 15px auto;
+   width: max-content;
+}
+
+.pagination span {
+   margin-right: 10px;
+}
+
+.pagination span.selectedPage {
+   font-weight: bold;
+   color: rgb(22, 161, 128);
+}
+
+.pagination span:hover {
+   cursor: pointer;
+   color: rgb(22, 161, 128);
+}
+
+.pagination button {
+   margin-right: 10px;
+}

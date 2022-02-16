@@ -5,6 +5,7 @@ import NewMessageForm from "../../Common/NewMessageForm/NewMessageForm";
 import userPhoto from "../../../assets/images/avatar.png";
 
 const MyPosts = ({ posts, avatar, addNewPost, }) => {
+
    const addNewPostHandler = (newPostText) => {
       addNewPost(newPostText);
    };
