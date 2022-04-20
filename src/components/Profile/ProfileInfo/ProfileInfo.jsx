@@ -7,7 +7,7 @@ const ProfileInfo = ({ profile, updateUserStatus, status }) => {
       return (
          <div className={ styles.contactRow } key={index}>
             <div className={ styles.contactLabel }>{ source }</div>
-            <div className={ styles.contactValue }>{ value ? value : '-' }</div>
+             <div className={ styles.contactValue }>{ value ? <a href={value} target={"_blank"}>{value}</a> : '-' }</div>
          </div>
       )
    })
